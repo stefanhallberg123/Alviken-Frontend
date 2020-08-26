@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.scss';
-import Formmodal from './components/formModal/FormModal';
+//import Formmodal from './components/formModal/FormModal';
+import AdminBooking from './components/adminbooking/adminbooking'
 
 function App() {
   return (
     <div className="App">
-      <Formmodal></Formmodal>
+      <AdminBooking></AdminBooking>
     </div>
   );
 }
