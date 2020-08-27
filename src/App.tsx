@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.scss';
-//import Formmodal from './components/formModal/FormModal';
-import AdminBooking from './components/adminbooking/adminbooking'
+import AdminBooking from './components/adminbooking/adminbooking';
 
 function App() {
   return (

@@ -7,9 +7,9 @@ export default function AdminBooking() {
     return(<div>
                 <nav>
                     <ul id="nav">
-                        <li id="menu"><a href="http://randomurl.com">Bokningar</a></li>
-                        <li id="menu"><a href="http://randomurl.com">Inställningar</a></li>
                         <li id="menu"><a href="http://randomurl.com">Logga ut</a></li>
+                        <li id="menu"><a href="http://randomurl.com">Inställningar</a></li>
+                        <li id="menu"><a href="http://randomurl.com">Bokningar</a></li>
                     </ul>
                 </nav>
 
