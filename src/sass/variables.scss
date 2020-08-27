@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&family=Poppins:wght@100;400;800&display=swap');
+
+$logofont: 'Philosopher', sans-serif;
+$mainfont: 'Poppins', sans-serif;
+
+$gold: #8D703C;
+$black: #000000;
+$grey: #ECECEC;
+$white: #FFFFFF;
+
+#logo {
+    font-family: $logofont;
+    font-style: normal;
+    font-weight: 400;
+    color: $white;
+}
+
+h1 {
+    font-family: $mainfont;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    color: $black;
+}
+
+h2 {
+    font-family: $mainfont;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: $black;
+}
+
+h3 {
+    font-family: $mainfont;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: $black;
+}
+
+
+p {
+    font-family: $mainfont;
+    font-style: normal;
+    font-weight: 400;
+    // font-size: ;
+    // color: ;
+}
+
+#bigbutton {
+    width: 316px;
+    height: 180px;
+    background: $gold;
+    text-align: center;
+    color: $white;
+}
+
+#normalbutton {
+    width: 158px;
+    height: 52px;
+    background: $gold;
+    text-align: center;
+    color: $white;
+}
+
+input {
+    width: 484px;
+    height: 43px;
+    background: $white;
+    text-align: left;
+    color: $black;
+}
