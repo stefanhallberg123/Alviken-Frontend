@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/components/adminbooking/adminbooking.scss
 // @import '';
 
 // #nav {
@@ -45,3 +46,32 @@
 // #smallimg {
 //     width: 30px;
 // }
+=======
+@import '/Users/Isabelle/Desktop/FED19ToUpload/Alviken-Frontend/src/sass/variables.scss';
+
+#nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: $gold;
+  color: $white;
+  font-family: $mainfont;
+};
+
+#menu {
+  float: right;
+}
+
+#menu a {
+  display: block;
+  color: $white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+#menu a:hover {
+  background-color: $black;
+}
+>>>>>>> f8733a1410e2609ec8f0a87ac40fc52fcc4e9120:src/components/admin/navbar/navbar.scss
