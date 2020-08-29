@@ -7,11 +7,20 @@ interface ISendFromForm {
 export default function ModalForm(props: ISendFromForm) {
   const { updateValue } = props;
 
+<<<<<<< HEAD
   const startValue = {
+=======
+  const [bookingUser, setbookingUser] = useState({
+    table: "",
+    qty: "",
+    timeslot: "",
+    date: "",
+>>>>>>> 431aa9e4260599963d8d1a4dfcf3b83c59e5a027
     name: "",
     phone: "",
     comment: "",
     email: "",
+<<<<<<< HEAD
   };
 
   const [bookingUser, setbookingUser] = useState(startValue);
@@ -19,12 +28,20 @@ export default function ModalForm(props: ISendFromForm) {
 
   const handleData = (e: any) => {
     e.persist();
+=======
+  });
+
+  const handleData = (e: any) => {
+>>>>>>> 431aa9e4260599963d8d1a4dfcf3b83c59e5a027
     setbookingUser({ ...bookingUser, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: any) => {
     updateValue(bookingUser);
+<<<<<<< HEAD
     e.preventDefault();
+=======
+>>>>>>> 431aa9e4260599963d8d1a4dfcf3b83c59e5a027
   };
 
   return (
@@ -36,7 +53,11 @@ export default function ModalForm(props: ISendFromForm) {
           name="name"
           placeholder="Namn"
           type="text"
+<<<<<<< HEAD
           value={name}
+=======
+          value={bookingUser.name}
+>>>>>>> 431aa9e4260599963d8d1a4dfcf3b83c59e5a027
           onChange={handleData}
           required
         />
@@ -45,7 +66,11 @@ export default function ModalForm(props: ISendFromForm) {
           name="email"
           placeholder="Email"
           type="email"
+<<<<<<< HEAD
           value={email}
+=======
+          value={bookingUser.email}
+>>>>>>> 431aa9e4260599963d8d1a4dfcf3b83c59e5a027
           onChange={handleData}
           required
         />
@@ -54,7 +79,11 @@ export default function ModalForm(props: ISendFromForm) {
           name="phone"
           placeholder="Telefonnummer"
           type="number"
+<<<<<<< HEAD
           value={phone}
+=======
+          value={bookingUser.phone}
+>>>>>>> 431aa9e4260599963d8d1a4dfcf3b83c59e5a027
           onChange={handleData}
           required
         />
@@ -62,7 +91,11 @@ export default function ModalForm(props: ISendFromForm) {
           className="comment"
           name="comment"
           placeholder="Meddelande till restaurangen"
+<<<<<<< HEAD
           value={comment}
+=======
+          value={bookingUser.comment}
+>>>>>>> 431aa9e4260599963d8d1a4dfcf3b83c59e5a027
           onChange={handleData}
           required
         />
