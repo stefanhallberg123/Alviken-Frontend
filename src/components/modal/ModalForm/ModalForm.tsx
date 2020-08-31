@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./ModalForm.scss";
 interface ISendFromForm {
   updateValue(bookingUser: any): void;
 }
@@ -11,8 +11,6 @@ export interface IStartValue {
 }
 
 export default function ModalForm(props: ISendFromForm) {
-  const { updateValue } = props;
-
   let defaultValue: IStartValue = {
     name: "",
     phone: "",
@@ -27,9 +25,8 @@ export default function ModalForm(props: ISendFromForm) {
   };
 
   const handleSubmit = (e: any) => {
-    updateValue(bookingUser);
     e.preventDefault();
-    console.log(bookingUser);
+    props.updateValue(bookingUser);
   };
 
   return (
@@ -41,7 +38,7 @@ export default function ModalForm(props: ISendFromForm) {
           name="name"
           placeholder="Namn"
           type="text"
-          value={bookingUser.email}
+          value={bookingUser.name}
           onChange={handleData}
           required
         />
