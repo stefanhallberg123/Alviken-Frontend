@@ -1,11 +1,11 @@
-import React from 'react';
-import AdminBooking from './components/admin/booking';
-import LandingPage from './components/landingpage/landingpage';
+import React from "react";
+import "./App.scss";
+import Modal from "./components/modal/Modal/Modal";
 
 function App() {
   return (
     <div className="App">
-      <LandingPage></LandingPage>
+      <Modal></Modal>
     </div>
   );
 }
