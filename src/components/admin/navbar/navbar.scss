@@ -1,0 +1,27 @@
+@import '/Users/Isabelle/Desktop/FED19ToUpload/Alviken-Frontend/src/sass/variables.scss';
+
+#nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: $gold;
+  color: $white;
+  font-family: $mainfont;
+};
+
+#menu {
+  float: right;
+}
+
+#menu a {
+  display: block;
+  color: $white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+#menu a:hover {
+  background-color: $black;
+}

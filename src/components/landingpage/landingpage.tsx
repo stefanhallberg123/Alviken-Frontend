@@ -10,9 +10,9 @@ export default function LandingPage() {
                 <h1>Alviken</h1>
                 <h2>Välkommen att boka bord hos oss!</h2>
                 <div className="booking">
-                    <div className="day">lorem ipsum</div>
-                    <div className="time">lorem ipsum</div>
-                    <div className="people">lorem ipsum</div>
+                    <div className="day">lorem ipsum</div> react date
+                    <div className="time">lorem ipsum</div> radiobuttons
+                    <div className="people">lorem ipsum</div> optionslista 
                     <div className="bookbutton">Boka</div>
                 </div>
                 
