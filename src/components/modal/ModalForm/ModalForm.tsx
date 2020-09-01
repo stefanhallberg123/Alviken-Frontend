@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import "./ModalForm.scss";
+import ModalGDPR from "./ModalGDPR/ModalGDPR";
 interface ISendFromForm {
-  updateValue(bookingUser: any): void;
+  updateValue(bookingUser: IUserValue): void;
 }
-export interface IStartValue {
+interface ICheckboxCheck {
+  setcheckboxIsCheck(checkbox: boolean): void;
+}
+export interface IUserValue {
   name: string;
   phone: string;
   comment: string;
@@ -11,7 +15,7 @@ export interface IStartValue {
 }
 
 export default function ModalForm(props: ISendFromForm) {
-  let defaultValue: IStartValue = {
+  let defaultValue: IUserValue = {
     name: "",
     phone: "",
     comment: "",
@@ -19,19 +23,22 @@ export default function ModalForm(props: ISendFromForm) {
   };
 
   const [bookingUser, setbookingUser] = useState(defaultValue);
+  const [, setcheckboxIsCheck] = useState({});
+  const checkTheBox = (checkbox: boolean) => {
+    setcheckboxIsCheck({ checkbox });
+  };
 
   const handleData = (e: any) => {
     setbookingUser({ ...bookingUser, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const handleSubmit = (data: any) => {
     props.updateValue(bookingUser);
   };
 
   return (
     <div className="formDiv">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h1>Boka Bord</h1>
         <input
           className="name"
@@ -66,9 +73,13 @@ export default function ModalForm(props: ISendFromForm) {
           placeholder="Meddelande till restaurangen"
           value={bookingUser.comment}
           onChange={handleData}
-          required
         />
-        <button id="normalbutton" onClick={handleSubmit} type="submit">
+        <ModalGDPR sendCheckbox={checkTheBox}></ModalGDPR>
+        <button
+          disabled={!bookingUser && !checkTheBox}
+          id="normalbutton"
+          type="submit"
+        >
           BOKA
         </button>
       </form>
