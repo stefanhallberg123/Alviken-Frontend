@@ -1,0 +1,28 @@
+@import '/Users/Isabelle/Desktop/FED19ToUpload/Alviken-Frontend/src/sass/variables.scss';
+
+.datum {
+    position: absolute;
+    width: 175px;
+    height: 108px;
+    left: 478px;
+    top: 334px;
+    border-style: 1px $black;
+}
+
+.sittning {
+    position: absolute;
+    width: 157px;
+    height: 108px;
+    left: 670px;
+    top: 334px;
+    border-style: 1px $black;
+}
+
+.antal {
+    position: absolute;
+    width: 117px;
+    height: 108px;
+    left: 845px;
+    top: 334px;
+    border-style: 1px $black;
+}
