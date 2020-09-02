@@ -4,6 +4,7 @@ import { Switch, Route, withRouter, RouteComponentProps, Link } from 'react-rout
 import Home from './components/admin/Home';
 import Create from './components/admin/Create';
 import Edit from './components/admin/Edit';
+import LandingPage from './components/landingpage/landingpage';
 
 // import EditCustomer from './components/customer/Edit';
 
@@ -27,6 +28,7 @@ class App extends React.Component<RouteComponentProps<any>> {
           <Route path={'/admin/create'} exact component={Create} />
 
           <Route path={'/admin/edit/:id'} exact component={Edit} />
+          <Route path={'/'} exact component={LandingPage} />
         </Switch>
       </div>
     );
