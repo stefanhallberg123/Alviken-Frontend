@@ -41,16 +41,15 @@ html {
       background: #8d703c;
       font-family: "Poppins";
       font-style: normal;
+      box-sizing: border-box;
       font-weight: 800;
       font-size: 23px;
       line-height: 34px;
       color: #ffffff;
       border: none;
-<<<<<<< HEAD
-     display: block;
-     margin-left: 47%;
-=======
->>>>>>> 9e28561a9027580b389dfbfd28127f9a70b8b21e
+      display: inline-block;
+      margin: 1%;
+      width: 25%;
     }
   }
 }
