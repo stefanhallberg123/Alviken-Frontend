@@ -1,0 +1,29 @@
+@import '/Users/Isabelle/Desktop/FED19ToUpload/Alviken-Frontend/src/sass/variables.scss';
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #DED4C1;
+}
+
+#smallimg {
+    width: 30px;
+}
+
+#header {
+    font-family: $logofont;
+    font-style: normal;
+    font-weight: 400;
+    color: $black;
+    font-size: 35px;
+}

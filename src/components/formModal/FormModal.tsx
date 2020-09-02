@@ -21,7 +21,7 @@ export default function Formmodal() {
       respone => {
         console.log(respone.data);
       }).catch(function (err) {
-        console.log(err);
+        console.log(err); 
       })
   }, []);
 

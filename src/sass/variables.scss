@@ -60,12 +60,21 @@ p {
     background: $gold;
     text-align: center;
     color: $white;
+    font-weight: 800;
+    font-size: 16px;
 }
 
 input {
     width: 484px;
     height: 43px;
     background: $white;
+    border-style: 1px $black;
     text-align: left;
     color: $black;
+    margin-bottom: 10px;
+    // margin: 0 auto;
+    padding: 0 auto;
+    padding-left: 10px;
+    font-family: $mainfont;
+
 }

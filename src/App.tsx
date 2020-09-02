@@ -1,13 +1,35 @@
-import React from 'react';
+import * as React from 'react';
 import './App.scss';
-import AdminBooking from './components/admin/booking';
+import { Switch, Route, withRouter, RouteComponentProps, Link } from 'react-router-dom';
+import Home from './components/admin/Home';
+import Create from './components/admin/Create';
+import Edit from './components/admin/Edit';
 
-function App() {
-  return (
-    <div className="App">
-      <AdminBooking></AdminBooking>
-    </div>
-  );
+// import EditCustomer from './components/customer/Edit';
+
+class App extends React.Component<RouteComponentProps<any>> {
+  public render() {
+    return (
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to={'/admin'}> Home </Link>
+            </li>
+            <li>
+              <Link to={'/admin/create'}> Create Customer </Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path={'/admin'} exact component={Home} />
+          {/* <Route path={'/create'} exact component={Create} /> */}
+          <Route path={'/admin/create'} exact component={Create} />
+
+          <Route path={'/admin/edit/:id'} exact component={Edit} />
+        </Switch>
+      </div>
+    );
+  }
 }
-
-export default App;
+export default withRouter(App);
