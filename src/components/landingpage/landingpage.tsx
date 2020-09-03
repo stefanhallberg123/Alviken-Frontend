@@ -34,6 +34,14 @@ export default function LandingPage() {
         
 }
 
+function handleDateSelect(day: string){
+        
+    console.log("handled")
+    console.log(day)
+    setSelectedDate(day.replace("T10:00:00.000Z", ""))
+
+}
+
 
 
 
@@ -49,8 +57,8 @@ export default function LandingPage() {
 
                             <div className="day">
                                 <DayPickerInput onDayChange={day => {
-                                console.log(day.toLocaleDateString())
-                                setSelectedDate(day.toLocaleDateString());
+                                handleDateSelect(day.toISOString());
+                                // setSelectedDate(day.toLocaleDateString());
                                 }}/> 
                             </div> 
 
