@@ -12,6 +12,59 @@ export default function LandingPage() {
     console.log(selectedTime);
     console.log(selectedPeople);
 
+<<<<<<< HEAD
+        Axios.get("http://localhost:5000/?date="+selectedDate+"&time="+selectedTime+"&people="+selectedPeople).then(response => response.data()).then(bookings =>{
+            console.log(bookings)
+        })
+    }
+      function handleTimeSelect(e: ChangeEvent<HTMLSelectElement>){
+        
+            console.log(e.target.value)
+            setSelectedTime(e.target.value);
+            
+    }
+    function handlePeopleSelect(e: ChangeEvent<HTMLSelectElement>){
+        
+        console.log(e.target.value)
+        setSelectedPeople(e.target.value);
+        
+}
+
+function handleDateSelect(day: string){
+        
+    console.log("handled")
+    console.log(day)
+    setSelectedDate(day.replace("T10:00:00.000Z", ""))
+
+}
+
+
+
+
+
+    return (<div>
+        <div className="landingpage-body">
+            <section className="hero">
+                <div className="hero-inner">
+                    <h1>Alviken</h1>
+                    <h2>Välkommen att boka bord hos oss!</h2>
+                    <form>
+                        <div className="booking">
+
+                            <div className="day">
+                                <DayPickerInput onDayChange={day => {
+                                handleDateSelect(day.toISOString());
+                                // setSelectedDate(day.toLocaleDateString());
+                                }}/> 
+                            </div> 
+
+                            <div className="time">
+                                <select onChange={handleTimeSelect}>
+                                    <option value="18">18:00</option>
+                                    <option value="21">21:00</option>
+                                </select>
+                            </div>
+=======
     Axios.get(
       "http://localhost:5000/?date=" +
         selectedDate +
@@ -33,6 +86,7 @@ export default function LandingPage() {
     console.log(e.target.value);
     setSelectedPeople(e.target.value);
   }
+>>>>>>> dc71dbc7488daa8a60b40ba47027c877a818240f
 
   return (
     <div>
