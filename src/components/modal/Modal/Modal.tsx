@@ -15,7 +15,6 @@ export default function Modal() {
   const [, setuserValue] = useState({});
   const updateValue = (bookingUser: IUserValue) => {
     setuserValue({ bookingUser });
-    console.log(bookingUser);
 
     axios.post("http://localhost:5000/", bookingUser).then((response) => {
       console.log(response.data);
