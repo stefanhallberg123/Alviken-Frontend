@@ -82,7 +82,6 @@ export default function ModalForm(props: ISendFromForm) {
         >
           BOKA
         </button>
-        {Error && <p>{Error}</p>}
       </form>
     </div>
   );
