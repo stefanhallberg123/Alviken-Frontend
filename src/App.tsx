@@ -16,12 +16,13 @@ function App() {
           <Route exact path="/modal">
             <Modal></Modal>
           </Route>
+          {/* </Route>
           <Route exact path="/thankyou">
             <ThankYou></ThankYou>
           </Route>
-          <Route path={"/admin"} exact component={Home} />
+          {/* <Route path={"/admin"} exact component={Home} /> */}
 
-          <Route exact path="/admin/create">
+          {/* <Route exact path="/admin/create">
             <Create></Create>
           </Route>
           <Route exact path="/admin/edit/:id">
@@ -29,7 +30,7 @@ function App() {
           </Route>
           <Route path="/">
             <LandingPage></LandingPage>
-          </Route>
+          </Route> */}
           {/* <Route path="*">
             <NoMatch></NoMatch>
           </Route> */}

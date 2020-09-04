@@ -1,21 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
-html {
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  text-align: center;
-  box-sizing: border-box;
-  .modalBtn {
-    color: white;
-    border: 1px solid #8d703c;
-    background-color: #8d703c;
-    font-family: "Philosopher";
-    font-style: normal;
-    font-weight: bold;
-    cursor: pointer;
-    width: 3%;
-    border-radius: 50%;
-    margin-left: 80%;
-    margin-top: 5%;
-  }
+
+.modalBtn {
+  color: white;
+  border: 1px solid #8d703c;
+  background-color: #8d703c;
+  font-family: "Philosopher";
+  font-style: normal;
+  font-weight: bold;
+  cursor: pointer;
+  width: 3%;
+  border-radius: 50%;
+  margin-left: 80%;
+  margin-top: 5%;
 }
