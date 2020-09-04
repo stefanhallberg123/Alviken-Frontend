@@ -13,7 +13,7 @@ export default class Home extends React.Component<RouteComponentProps, IState> {
     }
     public componentDidMount(): void {
         axios.get("http://localhost:5000/admin").then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             this.setState({ booking: response.data });
         })
     }
@@ -26,7 +26,7 @@ export default class Home extends React.Component<RouteComponentProps, IState> {
     }
     public render() {
         // const booking = this.state.booking;
-        console.log(this.state, "strumpa")
+        // console.log(this.state, "strumpa")
         let trs = this.state.booking.map(customer => {
             return (
             <tr key={customer._id}>
@@ -47,7 +47,7 @@ export default class Home extends React.Component<RouteComponentProps, IState> {
             </tr>);
         });
 
-        console.log(trs);
+        // console.log(trs);
         return (
             <div>
                 {this.state.booking.length === 0 && (
