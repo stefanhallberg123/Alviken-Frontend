@@ -10,11 +10,12 @@ export default function ThankYou() {
     );
   }, []);
 
+  console.log(data);
   return (
     <div>
       <ul>
-        {data.map((item, i) => (
-          <li className="" key={i}>
+        {data.map((item: any, i: any) => (
+          <li className="bookingNR" key={i}>
             {item._id}
           </li>
         ))}
