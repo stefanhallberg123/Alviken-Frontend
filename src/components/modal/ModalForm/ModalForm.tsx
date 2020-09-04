@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ModalForm.scss";
 import ModalGDPR from "./ModalGDPR/ModalGDPR";
+
 interface ISendFromForm {
   updateValue(bookingUser: IUserValue): void;
 }
