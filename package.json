@@ -16,7 +16,7 @@
     "date-picker": "^0.5.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
-    "react-day-picker": "^7.4.8",
+
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.7.0",
     "react-hooks-form": "^2.0.1",

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./ModalForm.scss";
 import ModalGDPR from "./ModalGDPR/ModalGDPR";
-import { Redirect } from "react-router-dom";
 interface ISendFromForm {
   updateValue(bookingUser: IUserValue): void;
 }
@@ -35,8 +34,6 @@ export default function ModalForm(props: ISendFromForm) {
 
   const handleSubmit = () => {
     props.updateValue(bookingUser);
-
-    return <Redirect to="/thankyou/" />;
   };
 
   return (

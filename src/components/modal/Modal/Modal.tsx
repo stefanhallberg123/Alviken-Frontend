@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ModalForm, { IUserValue } from "../ModalForm/ModalForm";
 import axios from "axios";
 import "./Modal.scss";
-import reactmodal from "react-modal";
 
 export default function Modal() {
   const [modalIsOpen, setlIsOpen] = useState(true);
