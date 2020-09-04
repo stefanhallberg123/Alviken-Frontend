@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import * as React from 'react';
 import './App.scss';
 import { Switch, Route, Link } from 'react-router-dom';
@@ -41,3 +42,32 @@ export default function App() {
       </div>
     );
   }
+=======
+import React from "react";
+import "./App.scss";
+import Modal from "./components/modal/Modal/Modal";
+import LandingPage from "./components/landingpage/landingpage";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route path="/modal">
+            <Modal></Modal>
+          </Route>
+          <Route path="/">
+            <LandingPage></LandingPage>
+          </Route>
+          {/* <Route path="*">
+            <NoMatch></NoMatch>
+          </Route> */}
+        </Switch>
+      </Router>
+    </div>
+  );
+}
+
+export default App;
+>>>>>>> b437db7ad95b43c00855d81f7d9f44307d1b06f0
