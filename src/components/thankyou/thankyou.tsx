@@ -6,20 +6,17 @@ export default function ThankYou() {
 
   useEffect(() => {
     Axios.get("http://localhost:5000/thankyou").then((result) =>
-      setData(result.data)
+      setData(result.data._id)
     );
   }, []);
 
   console.log(data);
   return (
     <div>
-      <ul>
-        {data.map((item: any, i: any) => (
-          <li className="bookingNR" key={i}>
-            {item._id}
-          </li>
-        ))}
-      </ul>
+      <h2>Tack för din bokning!</h2>
+      <div className="bookingNR">Ditt bokningsnummer är : {data}</div>;
+      <div className="greetings">Hälsningar</div>
+      <h3>Alviken</h3>
     </div>
   );
 }

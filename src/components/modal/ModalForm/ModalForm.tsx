@@ -32,8 +32,10 @@ export default function ModalForm(props: ISendFromForm) {
     setbookingUser({ ...bookingUser, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: any) => {
     props.updateValue(bookingUser);
+    event.preventDefault();
+    window.location.href = "/thankyou";
   };
 
   return (
