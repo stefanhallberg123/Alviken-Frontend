@@ -7,7 +7,7 @@ interface IUpdateCheck {
 
 export default function ModalGDPR(props: IUpdateCheck) {
   const [checked, setChecked] = useState(false);
-
+  // checkboxen är false först och med handleClick så togglas datan och det skickas sedan till modalform(parent)
   function handleClick() {
     setChecked(!checked);
     props.sendCheckbox(checked);
