@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import "./ModalForm.scss";
 import ModalGDPR from "./ModalGDPR/ModalGDPR";
 interface ISendFromForm {
@@ -23,7 +23,7 @@ export default function ModalForm(props: ISendFromForm) {
   };
 
   const [bookingUser, setbookingUser] = useState(defaultValue);
-  const [checkboxIsCheck, setcheckboxIsCheck] = useState({});
+  const [, setcheckboxIsCheck] = useState({});
   const checkTheBox = (checkbox: boolean) => {
     setcheckboxIsCheck({ checkbox });
   };
@@ -32,13 +32,15 @@ export default function ModalForm(props: ISendFromForm) {
     setbookingUser({ ...bookingUser, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (event: any) => {
     props.updateValue(bookingUser);
+    event.preventDefault();
+    window.location.href = "/thankyou";
   };
 
   return (
     <div className="formDiv">
-      <form onSubmit={handleSubmit}>
+      <form>
         <h1>Boka Bord</h1>
         <input
           className="name"
@@ -75,14 +77,15 @@ export default function ModalForm(props: ISendFromForm) {
           onChange={handleData}
         />
         <ModalGDPR sendCheckbox={checkTheBox}></ModalGDPR>
+
         <button
           disabled={!bookingUser && !checkTheBox}
           id="normalbutton"
           type="submit"
+          onClick={handleSubmit}
         >
           BOKA
         </button>
-        {Error && <p>{Error}</p>}
       </form>
     </div>
   );

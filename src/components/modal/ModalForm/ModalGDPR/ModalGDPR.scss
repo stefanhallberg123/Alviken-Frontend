@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Philosopher&family=Poppins:wght@100;400;800&display=swap");
 
 .gdprDiv {
-  width: 100%;
+  max-width: 80%;
   .checkbox {
     position: relative;
     border: none;
     text-align: start;
     display: inline;
-    margin-right: 70%;
+    margin-right: 35%;
   }
   .gdprText {
     font-family: "Poppins";
