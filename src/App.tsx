@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./App.scss";
-import { Switch, Route, Link, Router } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Home from "./components/admin/Home";
 import Create from "./components/admin/Create";
 import Edit from "./components/admin/Edit";

@@ -1,13 +1,14 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import axios from "axios";
+import "./edit.scss";
 
 export interface IValues {
   [key: string]: any;
 }
 export interface IFormState {
   id: number;
-  user: any;
+  customer: any;
   values: IValues[];
   submitSuccess: boolean;
   loading: boolean;
@@ -21,7 +22,18 @@ class EditCustomer extends React.Component<
     super(props);
     this.state = {
       id: this.props.match.params.id,
-      user: {},
+      customer: {
+        date: "",
+        comment: "",
+        qty: [],
+        timeslot: "",
+        grpr: "",
+        user: {
+          name: "",
+          phone: "",
+          email: "",
+        },
+      },
       values: [],
       loading: false,
       submitSuccess: false,
@@ -32,7 +44,7 @@ class EditCustomer extends React.Component<
     axios
       .get(`http://localhost:5000/admin/edit/${this.state.id}`)
       .then((data) => {
-        this.setState({ user: data.data });
+        this.setState({ customer: data.data });
         console.log(data, "edit1");
       });
   }
@@ -68,12 +80,12 @@ class EditCustomer extends React.Component<
     const { submitSuccess, loading } = this.state;
     return (
       <div className="App">
-        {this.state.user && (
+        {this.state.customer && (
           <div className={"col-md-12 form-wrapper"}>
             <h2> EDITERA BOKNING</h2>
             {submitSuccess && (
               <div className="alert alert-info" role="alert">
-                Customer's details has been edited successfully{" "}
+                Customer's details has been edited successfully
               </div>
             )}
             <div className="col-md-12 form-wrapper">
@@ -82,141 +94,149 @@ class EditCustomer extends React.Component<
                 onSubmit={this.processFormSubmission}
                 noValidate={true}
               >
-                <div className="form-group col-md-12"></div>
-                <div className="boxcontainer form-group col-md-12">
-                  <div className="date col-2">
-                    <p className="dateheader"> DATUM </p>
-                    <p className="dateinput">2020-10-01</p>
-                    {/* <input
+                <div className="form-group col-md-12">
+                  <div className="boxcontainer form-group col-md-12">
+                    <div className="date col-2">
+                      <p className="dateheader"> DATUM </p>
+                      <p className="dateinput">2020-10-01</p>
+                      {/* <input
 											type="date"
 											name="date"
 											value="2020-10-01"
 											placeholder=""
 											onChange={handleChange}
 										/> */}
-                  </div>
-                  <div className="timeslot col-4">
-                    <p className="timeslotheader"> SITTNING </p>
-                    <ul>
-                      <li>
-                        <label htmlFor="radio1">
-                          18:00
-                          <input
-                            className="timeslotone"
-                            type="radio"
-                            id="radio1"
-                            name="timeslot"
-                            value="18:00"
-                            checked={this.state.user.timeslot === "18:00"}
-                            onChange={(e) => this.handleInputChanges(e)}
-                          />
-                        </label>
-                      </li>
-                      <li>
-                        <label htmlFor="radio2">
-                          21:00
-                          <input
-                            className="timeslotinput form-control"
-                            type="radio"
-                            id="radio2"
-                            name="timeslot"
-                            value="21:00"
-                            checked={this.state.user.timeslot === "21:00"}
-                            onChange={(e) => this.handleInputChanges(e)}
-                            required
-                          />
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                  <label>
-                    <div className="qty col-2">
-                      <p className="qtyheader">ANTAL</p>
-                      <select
-                        name="qty"
-                        defaultValue={this.state.user.qty}
-                        onChange={(e) => this.handleInputChanges(e)}
-                        required
-                      >
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                      </select>
                     </div>
-                  </label>
-                </div>
-                <div className="form-group col-md-12">
-                  <input
-                    type="text"
-                    name="name"
-                    defaultValue={this.state.user.name}
-                    onChange={(e) => this.handleInputChanges(e)}
-                    placeholder="Namn"
-                    className="form-control forminput"
-                    required
-                  />
-                </div>
-                <div className="form-group col-md-12">
-                  <input
-                    type="text"
-                    name="phone"
-                    defaultValue={this.state.user.phone}
-                    onChange={(e) => this.handleInputChanges(e)}
-                    placeholder="Telefon"
-                    className="form-control forminput"
-                    required
-                  />
-                </div>
-                <div className="form-group col-md-12">
-                  <input
-                    type="text"
-                    name="email"
-                    defaultValue={this.state.user.email}
-                    onChange={(e) => this.handleInputChanges(e)}
-                    placeholder="Email"
-                    className="form-control forminput"
-                    required
-                  />
-                </div>
-                <div className="form-group col-md-12 ">
-                  <textarea
-                    name="comment"
-                    defaultValue={this.state.user.comment}
-                    onChange={(e) => this.handleInputChanges(e)}
-                    className="form-control forminput"
-                    placeholder="Kommentar"
-                  />
-                </div>
-                <div className="form-group col-md-12 ">
-                  <input
-                    type="checkbox"
-                    name="gdpr"
-                    defaultValue={this.state.user.gdpr}
-                    onChange={(e) => this.handleInputChanges(e)}
-                    className="form-control forminput"
-                    required
-                  />
-                  <p className="checkboxgdprtext">
-                    {" "}
-                    * By clicking on this check box you agree that we handle
-                    your personal data in accordance with GDPR. You can read
-                    more about this under our Privacy Page.
-                  </p>
-                </div>
+                    <div className="timeslot col-4">
+                      <p className="timeslotheader"> SITTNING </p>
+                      <ul>
+                        <li>
+                          <label htmlFor="radio1">
+                            18:00
+                            <input
+                              className="timeslotone"
+                              type="radio"
+                              id="radio1"
+                              name="timeslot"
+                              value="18:00"
+                              checked={this.state.customer.timeslot === "18:00"}
+                              onChange={(e) => this.handleInputChanges(e)}
+                            />
+                          </label>
+                        </li>
+                        <li>
+                          <label htmlFor="radio2">
+                            21:00
+                            <input
+                              className="timeslotinput for m-control"
+                              type="radio"
+                              id="radio2"
+                              name="timeslot"
+                              value="21:00"
+                              checked={this.state.customer.timeslot === "21:00"}
+                              onChange={(e) => this.handleInputChanges(e)}
+                              required
+                            />
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                    <label>
+                      <div className="qty col-2">
+                        <p className="qtyheader">ANTAL</p>
+                        <select
+                          value={this.state.customer.qty}
+                          onChange={() => this.setState({})}
+                        >
+                          {/* {this.state.customer.map((qty: any) =><option key={qty.value} value={qty.value}>{qty.display}</option>)} */}
+                        </select>
+                        <select
+                          name="qty"
+                          defaultValue={this.state.customer.qty}
+                          onChange={(e) => this.handleInputChanges(e)}
+                          required
+                        >
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                        </select>
+                      </div>
+                    </label>
+                  </div>
+                  <div className="form-group col-md-12">
+                    <input
+                      type="text"
+                      name="name"
+                      defaultValue={this.state.customer.name}
+                      onChange={(e) => this.handleInputChanges(e)}
+                      placeholder="Namn"
+                      className="form-control forminput"
+                      required
+                    />
+                  </div>
+                  <div className="form-group col-md-12">
+                    <input
+                      type="text"
+                      name="phone"
+                      defaultValue={this.state.customer.phone}
+                      onChange={(e) => this.handleInputChanges(e)}
+                      placeholder="Telefon"
+                      className="form-control forminput"
+                      required
+                    />
+                  </div>
+                  <div className="form-group col-md-12">
+                    <input
+                      type="text"
+                      name="email"
+                      defaultValue={this.state.customer.email}
+                      onChange={(e) => this.handleInputChanges(e)}
+                      placeholder="Email"
+                      className="form-control forminput"
+                      required
+                    />
+                  </div>
+                  <div className="form-group col-md-12 ">
+                    <textarea
+                      name="comment"
+                      defaultValue={this.state.customer.comment}
+                      onChange={(e) => this.handleInputChanges(e)}
+                      className="form-control forminput"
+                      placeholder="Kommentar"
+                    />
+                  </div>
+                  <div className="form-group col-md-12 ">
+                    <input
+                      type="checkbox"
+                      name="gdpr"
+                      defaultValue={this.state.customer.gdpr}
+                      onChange={(e) => this.handleInputChanges(e)}
+                      className="form-control forminput gdpr"
+                      required
+                    />
+                    <p className="checkboxgdprtext">
+                      {" "}
+                      * By clicking on this check box you agree that we handle
+                      your personal data in accordance with GDPR. You can read
+                      more about this under our Privacy Page.
+                    </p>
+                  </div>
 
-                <div className="form-group col-md-4 pull-right">
-                  <button className="btn" type="submit">
-                    Skicka
-                  </button>
-                  {loading && <span className="fa fa-circle-o-notch fa-spin" />}
+                  <div className="form-group col-md-4 pull-right">
+                    <button className="btn" type="submit">
+                      Skicka
+                    </button>
+                    {loading && (
+                      <span className="fa fa-circle-o-notch fa-spin" />
+                    )}
+                  </div>
                 </div>
               </form>
             </div>
-            <pre>{JSON.stringify(this.state, this.state.user, 3)}</pre>
+            <pre>{JSON.stringify(this.state, this.state.customer, 3)}</pre>
           </div>
         )}
       </div>
@@ -225,6 +245,8 @@ class EditCustomer extends React.Component<
 }
 
 export default withRouter(EditCustomer);
+
+// OLD
 
 // import React, { useState } from "react";
 // import './edit.scss'

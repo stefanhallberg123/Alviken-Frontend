@@ -111,7 +111,7 @@ html {
             }
         }
         .forminput {
-            width: 484px;
+            // width: 484px;
             height: 43px;
             border: 1px solid $black;
             // margin-top: 15px;
@@ -119,6 +119,12 @@ html {
             color: $black;
             font-family: $mainfont;
         }
+        .gdpr {
+            width: 20px;
+            float: left;
+            margin-left: 10px;
+        }
+
         // .gdprbox:checked ~ .checkmark{
         //     background-color: $gold;
             .checkboxgdpr {
