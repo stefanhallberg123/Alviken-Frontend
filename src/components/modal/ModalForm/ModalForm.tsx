@@ -4,34 +4,36 @@ import ModalGDPR from "./ModalGDPR/ModalGDPR";
 interface ISendFromForm {
   updateValue(bookingUser: IUserValue): void;
 }
-interface ICheckboxCheck {
-  setcheckboxIsCheck(checkbox: boolean): void;
-}
 export interface IUserValue {
   name: string;
   phone: string;
   comment: string;
   email: string;
+  error: string;
 }
 
 export default function ModalForm(props: ISendFromForm) {
+  // tomt startvärde
   let defaultValue: IUserValue = {
     name: "",
     phone: "",
     comment: "",
     email: "",
+    error: "",
   };
-
+  // ändrar state från defaultValue till bookingUser när infon kommer in
+  // samt kollar så att checkboxen är ifylld från ModalGDPR
   const [bookingUser, setbookingUser] = useState(defaultValue);
   const [, setcheckboxIsCheck] = useState({});
   const checkTheBox = (checkbox: boolean) => {
     setcheckboxIsCheck({ checkbox });
   };
 
+  // hämtar värdena från inputfälten
   const handleData = (e: any) => {
     setbookingUser({ ...bookingUser, [e.target.name]: e.target.value });
   };
-
+  // skickar datan till Modal (parent) och om det är ifyllt så kommer man till thankyou
   const handleSubmit = (event: any) => {
     props.updateValue(bookingUser);
     event.preventDefault();

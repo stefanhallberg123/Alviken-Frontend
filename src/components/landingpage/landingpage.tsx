@@ -3,7 +3,7 @@ import React, {useState, ChangeEvent} from 'react';
 import 'react-day-picker/lib/style.css';
 import "./landingpage.scss";
 import Axios from "axios";
-import DayPickerInput from "react-day-picker";
+// import DayPickerInput from "react-day-picker";
 export default function LandingPage() {
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedTime, setSelectedTime] = useState("18");
@@ -60,7 +60,7 @@ function handleDateSelect(day: string){
                         <div className="booking">
 { 
                             <div className="day">
-                                <DayPickerInput onDayClick={(e)=>handleDateSelect(new Date(e.getDate()).toISOString())} 
+                                <DayPickerInput onDayClick={(e:any)=>handleDateSelect(new Date(e.getDate()).toISOString())} 
                                 // setSelectedDate(day.toLocaleDateString());
                                 /> 
                             </div>  }

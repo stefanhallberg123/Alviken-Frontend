@@ -29,10 +29,10 @@ export default function Create() {
 
     const handleBooking = (e: any) => {
         setBookedUser({ ...bookedUser, [e.target.name]: e.target.value})
+        console.log(bookedUser, 'createRakib')
     };
 
     const handleSubmit = (e: any) => {
-        console.log(bookedUser)
         axios.post("http://localhost:5000/admin/create", bookedUser).then((res) => {
             console.log(res.data, "Create1")
         }).catch(error => {
@@ -44,7 +44,7 @@ export default function Create() {
     console.log(bookedUser)
 return (
     <div>
-<form id={"create-post-form"} onClick={handleSubmit} >
+<form id={"create-post-form"} >
 
 <div className="boxcontainer form-group col-md-12">
     <div className="col-2 date">
@@ -146,6 +146,7 @@ return (
     />
 </div>
 <label>
+
 <div className="form-group col-md-12 gdprbox">
     <input
         type="checkbox"
@@ -158,7 +159,7 @@ return (
 </div>
     </label>
 <div className="form-group col-md-4 pull-right">
-    <button className="btn btn-success" type="submit" >
+    <button className="btn btn-success" type="submit" onClick={handleSubmit}>
         Boka
     </button>
     <pre>{JSON.stringify(bookedUser, null, 3)}</pre>
