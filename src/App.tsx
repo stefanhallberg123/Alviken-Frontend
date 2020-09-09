@@ -11,7 +11,7 @@ import LandingPage from "./components/landingpage/landingpage";
 export default function App() {
   return (
     <div>
-      <nav></nav>
+      {/* <nav></nav> */}
       <Switch>
         <Route path={"/admin"} exact component={Home} />
         <Route path="/modal" exact component={Modal} />

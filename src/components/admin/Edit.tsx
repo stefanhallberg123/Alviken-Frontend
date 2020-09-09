@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { RouteComponentProps, withRouter} from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import axios from 'axios';
-import './edit.scss'
+import './editandremove.scss'
+import AdminNav from './nav'
+
 
 export interface IValues {
   [key: string]: any;
@@ -21,7 +23,7 @@ class EditCustomer extends React.Component<RouteComponentProps<any>, IFormState>
             id: this.props.match.params.id,
             customer: {
 				comment: '',
-				qty: [],
+				qty: 0,
 				timeslot: '',
 				grpr: '',
 				user: {
@@ -46,10 +48,10 @@ public componentDidMount(): void {
 private processFormSubmission = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
 	e.preventDefault();
 	this.setState({ loading: true });
-	axios.patch(`http://localhost:5000/admin/edit/${this.state.id}`, this.state.values).then(data => {
+	axios.post(`http://localhost:5000/admin/edit/${this.state.id}`, this.state.values).then(data => {
 		this.setState({ submitSuccess: true, loading: false })
 		setTimeout(() => {
-			this.props.history.push('/');
+			this.props.history.push('/admin');
 		}, 1500)
 	})
 }
@@ -63,21 +65,22 @@ private handleInputChanges = (e: any) => {
 	this.setValues({ [e.currentTarget.id]: e.currentTarget.value })
 }
 
-
 public render() {
+	console.log(this.state.customer.qty)
 	const { submitSuccess, loading } = this.state;
 	return (
 		<div className="App">
+			<AdminNav></AdminNav>
 			{this.state.customer &&
 				<div className={"col-md-12 form-wrapper"}>
 					<h2> EDITERA BOKNING</h2>
 					{submitSuccess && (
 				<div className="alert alert-info" role="alert">
-					Customer's details has been edited successfully
+					Bokningsuppgifterna har ändrats.
 				</div>
-					)}
+				)}
 				<div className="col-md-12 form-wrapper">
-					<form id={"create-post-form"} onSubmit={this.processFormSubmission} noValidate={true}>
+					<form className="form" id={"create-post-form"} onSubmit={this.processFormSubmission} noValidate={true}>
                         <div className="form-group col-md-12">
 								<div className="boxcontainer form-group col-md-12">
 									<div className="date col-2">
@@ -93,50 +96,39 @@ public render() {
 									</div>
 									<div className="timeslot col-4">
 										<p className="timeslotheader"> SITTNING </p>
-										<ul>
-											<li>
-												<label htmlFor="radio1">18:00
-													<input
-														className="timeslotone"
-														type="radio"
-														id="radio1"
-														name="timeslot"
-														value="18:00"
-														checked={this.state.customer.timeslot === "18:00"}
-														onChange={(e) => this.handleInputChanges(e)}
-
-													/>
-												</label>
-											</li>
-											<li>
-												<label htmlFor="radio2">21:00
-													<input
-														className="timeslotinput for m-control"
-														type="radio"
-														id="radio2"
-														name="timeslot"
-														value="21:00"
-														checked={this.state.customer.timeslot === "21:00"}
-														onChange={(e) => this.handleInputChanges(e)}														required
-													/>
-												</label>
-											</li>
-										</ul>
+										<div className="radio-toolbar">
+											<input
+												className="timeslotone"
+												type="radio"
+												id="radio1"
+												name="timeslot"
+												checked={this.state.customer.timeslot === "18:00"}
+												value={'18:00'}
+												onChange={this.handleInputChanges}
+												required
+											/>
+											<p>&nbsp;</p>
+											<label htmlFor="radio1">18:00</label>
+											<input
+												className="timeslotone"
+												type="radio"
+												id="radio2"
+												name="timeslot"
+												checked={this.state.customer.timeslot === "21:00"}
+												value={'21:00'}
+												onChange={this.handleInputChanges}
+												required/>
+											<label htmlFor="radio2">21:00</label>
+										</div>
 									</div>
 										<label>
-									<div className="qty col-2">
+									<div className="qtybox col-2">
 									<p className="qtyheader">ANTAL</p>
-									<select value={this.state.customer.qty}
-              							onChange={() => this.setState({})}
-										  >
-											{/* {this.state.customer.map((qty: any) =><option key={qty.value} value={qty.value}>{qty.display}</option>)} */}
-
-										  </select>
 										<select
 										name="qty"
-										defaultValue={this.state.customer.qty}
-										onChange={(e) => this.handleInputChanges(e)}
-										required>
+										value={this.state.customer.qty}
+										onChange= {this.handleInputChanges}
+										>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -145,76 +137,82 @@ public render() {
 											<option value="6">6</option>
 										</select>
 									</div>
-										</label>
-									</div>
-									<div className="form-group col-md-12">
-										<input
-											type="text"
-											name="name"
-											defaultValue={this.state.customer.name}
-											onChange={(e) => this.handleInputChanges(e)}
-											placeholder="Namn"
-											className="form-control forminput"
-											required
-										/>
-									</div>
-									<div className="form-group col-md-12">
-										<input
-											type="text"
-											name="phone"
-											defaultValue={this.state.customer.phone}
-											onChange={(e) => this.handleInputChanges(e)}
-											placeholder="Telefon"
-											className="form-control forminput"
-											required
-										/>
-									</div>
-									<div className="form-group col-md-12">
-										<input
-											type="text"
-											name="email"
-											defaultValue={this.state.customer.email}
-											onChange={(e) => this.handleInputChanges(e)}
-											placeholder="Email"
-											className="form-control forminput"
-											required
-										/>
-									</div>
-									<div className="form-group col-md-12 ">
-										<textarea
-											name="comment"
-											defaultValue={this.state.customer.comment}
-											onChange={(e) => this.handleInputChanges(e)}
-											className="form-control forminput"
-											placeholder="Kommentar"/>
-									</div>
-									<div className="form-group col-md-12 ">
-										<input
-											type="checkbox"
-											name="gdpr"
-											defaultValue={this.state.customer.gdpr}
-											onChange={(e) => this.handleInputChanges(e)}
-											className="form-control forminput gdpr"
-											required
-										/>
-										<p className="checkboxgdprtext"> * By clicking on this check box you agree that we handle your personal data in accordance with GDPR. You can read more about this under our Privacy Page.</p>
-									</div>
-
-									<div className="form-group col-md-4 pull-right">
-										<button className="btn" type="submit">
-										Skicka
-										</button>
-										{loading &&
-                                        <span className="fa fa-circle-o-notch fa-spin" />
-                                        }
-									</div>
-								</div>
-								</form>
+								</label>
 							</div>
-						<pre>{JSON.stringify(this.state, this.state.customer, 3)}</pre>
+
+							<div className="form-group col-md-12">
+								<input
+									type="text"
+									id="name"
+									value={this.state.customer.user.name}
+									onChange= {this.handleInputChanges}
+									name="name"
+									className="form-control forminput"
+									placeholder="Namn"
+									required/>
+							</div>
+							<div className="form-group col-md-12">
+								<input
+									type="text"
+									name="phone"
+									value={this.state.customer.user.phone}
+									onChange= {this.handleInputChanges}
+									placeholder="Telefon"
+									className="form-control forminput"
+
+								/>
+							</div>
+							<div className="form-group col-md-12">
+								<input
+									type="email"
+									id="email"
+									value={this.state.customer.user.email}
+									onChange= {this.handleInputChanges}
+									name="email"
+									className="form-control forminput"
+									placeholder="Email"
+									required
+								/>
+							</div>
+							<div className="form-group col-md-12 ">
+								<textarea
+									id="comment"
+									value={this.state.customer.comment}
+									onChange= {this.handleInputChanges}
+									name="comment"
+									className="form-control forminput"
+									placeholder="Kommentar"
+									required/>
+							</div>
+							<div className="form-group col-md-12 gdprbox">
+								<input
+									type="checkbox"
+									name="gdpr"
+									value={this.state.customer.gdpr}
+									onChange= {this.handleInputChanges}
+									className="form-control forminput checkboxgdpr"
+
+								/>
+								<p className="checkboxgdprtext"> * By clicking on this check box you agree that we handle your personal data in accordance with GDPR. You can read more about this under our Privacy Page.</p>
+							</div>
+							<div className="form-group col-md-4 pull-right">
+								<button className="btn" type="submit">
+								<p>Ändra</p>
+								</button>
+								<button className="btn" type="submit">
+								<p>Tillbaka</p>
+								</button>
+								{loading &&
+								<span className="fa fa-circle-o-notch fa-spin" />
+								}
+							</div>
+						</div>
+						</form>
 					</div>
-				}
+				<pre>{JSON.stringify(this.state, this.state.customer, 3)}</pre>
 			</div>
+		}
+	</div>
 	)};
 }
 
