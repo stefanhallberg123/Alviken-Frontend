@@ -13,11 +13,11 @@ export default function ThankYou() {
   }, []);
 
   return (
-    <div>
-      <h2>Tack för din bokning!</h2>
+    <div className="container">
+      <h2 className="thankyou">Tack för din bokning!</h2>
       <div className="bookingNR">Ditt bokningsnummer är : {data}</div>;
       <div className="greetings">Hälsningar</div>
-      <h3>Alviken</h3>
+      <h3 className="alviken">Alviken</h3>
     </div>
   );
 }

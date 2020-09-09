@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import "./ModalForm.scss";
 import ModalGDPR from "./ModalGDPR/ModalGDPR";
 interface ISendFromForm {
@@ -82,7 +82,7 @@ export default function ModalForm(props: ISendFromForm) {
 
         <button
           disabled={!bookingUser && !checkTheBox}
-          id="normalbutton"
+          className="button"
           type="submit"
           onClick={handleSubmit}
         >

@@ -14,7 +14,7 @@ export default function Modal() {
     });
   };
   return (
-    <div>
+    <div className="formDiv">
       <ModalForm updateValue={updateValue}></ModalForm>
     </div>
   );
