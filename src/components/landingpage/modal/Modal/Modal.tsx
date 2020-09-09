@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalForm, { IUserValue } from "../ModalForm/ModalForm";
 import axios from "axios";
 import "./Modal.scss";
-import LandingPage from "../../landingpage/landingpage";
+import LandingPage from "../../landingpage";
 
 export default function Modal() {
   // hämtar datan från ModalForm och skickan in det i setUserValue
@@ -10,7 +10,6 @@ export default function Modal() {
   const updateUser = (people: any) => {
     setuserValue({people})
     console.log(people);
-    
   }
   const [, setuserValue] = useState({});
   const updateValue = (bookingUser: IUserValue) => {
@@ -22,7 +21,6 @@ export default function Modal() {
   };
   return (
     <div>
-      <LandingPage checkAvailability={updateUser}></LandingPage>
       <ModalForm updateValue={updateValue}></ModalForm>
     </div>
   );

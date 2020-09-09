@@ -42,7 +42,7 @@ export default function ModalForm(props: ISendFromForm) {
 
   return (
     <div className="formDiv">
-      <form>
+      <form className="userform">
         <h1>Boka Bord</h1>
         <input
           className="name"
@@ -82,7 +82,7 @@ export default function ModalForm(props: ISendFromForm) {
 
         <button
           disabled={!bookingUser && !checkTheBox}
-          id="normalbutton"
+          className="button"
           type="submit"
           onClick={handleSubmit}
         >

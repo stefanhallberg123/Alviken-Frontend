@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@mixin phone {
+  @media (max-width: 800px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+.userform {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  text-align: center;
+  box-sizing: border-box;
+  h1 {
+    color: white;
+    font-family: "Philosopher";
+    font-style: normal;
+    font-weight: bold;
+    margin: 2%;
+  }
+  input {
+    font-family: "Philosopher";
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin: 1%;
+  }
+  textarea {
+    font-family: "Philosopher";
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin: 1%;
+  }
+  .button {
+    background: #8d703c;
+    font-family: "Poppins";
+    font-style: normal;
+    box-sizing: border-box;
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 34px;
+    color: #ffffff;
+    border: none;
+    display: inline-block;
+    margin: 1%;
+    width: 25%;
+    @include phone {
+      margin-top: 15%;
+    }
+    @include tablet() {
+      margin-top: 10%;
+    }
+    @include desktop() {
+      margin-top: 5%;
+    }
+  }
+}

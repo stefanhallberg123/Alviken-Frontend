@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./components/admin/Home";
 import Create from "./components/admin/Create";
 import Edit from "./components/admin/Edit";
-import Modal from "./components/modal/Modal/Modal";
+import Modal from "./components/landingpage/modal/Modal/Modal";
 import ThankYou from "./components/thankyou/thankyou";
 import LandingPage from "./components/landingpage/landingpage";
 

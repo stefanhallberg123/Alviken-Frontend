@@ -1,174 +1,191 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './Create.scss';
+import React, { useState } from "react";
+import axios from "axios";
+import "./Create.scss";
 
 export interface IValues {
-    name: string,
-    email: string,
-    phone: string,
-    comment: string,
-    date: string,
-    timeslot: string,
-    qty: number,
-    gdpr: boolean,
+  name: string;
+  date: string;
+  email: string;
+  phone: string;
+  comment: string;
+  timeslot: string;
+  qty: number;
+  gdpr: boolean;
 }
 
 export default function Create() {
-    let defaultValue: IValues = {
-        name: '',
-        email: '',
-        phone: '',
-        comment: '',
-        date: '',
-        timeslot: '',
-        qty: 0,
-        gdpr: false,
-    };
+  let defaultValue: IValues = {
+    name: "",
+    email: "",
+    phone: "",
+    comment: "",
+    date: "",
+    timeslot: "",
+    qty: 0,
+    gdpr: false,
+  };
 
-    const [bookedUser, setBookedUser] = useState(defaultValue);
+  const [bookedUser, setBookedUser] = useState(defaultValue);
 
-    const handleBooking = (e: any) => {
-        setBookedUser({ ...bookedUser, [e.target.name]: e.target.value})
-        console.log(bookedUser, 'createRakib')
-    };
+  const handleBooking = (e: any) => {
+    setBookedUser({ ...bookedUser, [e.target.name]: e.target.value });
+    console.log(bookedUser, "createRakib");
+  };
 
-    const handleSubmit = (e: any) => {
-        axios.post("http://localhost:5000/admin/create", bookedUser).then((res) => {
-            console.log(res.data, "Create1")
-        }).catch(error => {
-            console.log(error.response)
+  const handleSubmit = (e: any) => {
+    axios
+      .post("http://localhost:5000/admin/create", bookedUser)
+      .then((res) => {
+        console.log(res.data, "Create1");
       })
-        console.log(bookedUser, "Create2")
-
-    }
-    console.log(bookedUser)
-return (
+      .catch((error) => {
+        console.log(error.response);
+      });
+    console.log(bookedUser, "Create2");
+  };
+  console.log(bookedUser);
+  return (
     <div>
-<form id={"create-post-form"} >
-
-<div className="boxcontainer form-group col-md-12">
-    <div className="col-2 date">
-        <p className="dateheader"> DATUM </p>
-        <p className="dateinput">2020-10-01</p>
-
-    </div>
-    <div className="timeslot col-4">
-        <p className="timeslotheader"> SITTNING </p>
-        <ul>
-            <li>
-                <label htmlFor="radio1">18:00
-                    <input
-                        className="timeslotone"
-                        type="radio"
-                        id="radio1"
-                        name="timeslot"
-                        checked={bookedUser.timeslot === "18:00"}
-                        value={'18:00'}
-                        onChange={handleBooking}
-                        required
-                        />
+      <form id={"create-post-form"}>
+        <div className="boxcontainer form-group col-md-12">
+          <div className="col-2 date">
+            <p className="dateheader"> DATUM </p>
+            <input
+              type="date"
+              name="date"
+              onChange={handleBooking}
+              value={bookedUser.date}
+            />
+          </div>
+          <div className="timeslot col-4">
+            <p className="timeslotheader"> SITTNING </p>
+            <ul>
+              <li>
+                <label htmlFor="radio1">
+                  18:00
+                  <input
+                    className="timeslotone"
+                    type="radio"
+                    id="radio1"
+                    name="timeslot"
+                    checked={bookedUser.timeslot === "18:00"}
+                    value={"18:00"}
+                    onChange={handleBooking}
+                    required
+                  />
                 </label>
-            </li>
-            <li>
-                <label htmlFor="radio2">21:00
-                    <input
-                        className="timeslotinput form-control"
-                        type="radio"
-                        id="radio2"
-                        name="timeslot"
-                        checked={bookedUser.timeslot === "21:00"}
-                        value={'21:00'}
-                        onChange={handleBooking}
-                        required
-                    />
+              </li>
+              <li>
+                <label htmlFor="radio2">
+                  21:00
+                  <input
+                    className="timeslotinput form-control"
+                    type="radio"
+                    id="radio2"
+                    name="timeslot"
+                    checked={bookedUser.timeslot === "21:00"}
+                    value={"21:00"}
+                    onChange={handleBooking}
+                    required
+                  />
                 </label>
-            </li>
-        </ul>
-    </div>
+              </li>
+            </ul>
+          </div>
+          <label>
+            <div className="qty col-2">
+              <p className="qtyheader">ANTAL</p>
+              <select
+                name="qty"
+                value={bookedUser.qty}
+                onChange={handleBooking}
+              >
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </div>
+          </label>
+        </div>
+        <div className="form-group col-md-12 ">
+          <input
+            type="text"
+            id="name"
+            value={bookedUser.name}
+            onChange={handleBooking}
+            name="name"
+            className="form-control forminput"
+            placeholder="Namn"
+          />
+        </div>
+        <div className="form-group col-md-12">
+          <input
+            type="email"
+            id="email"
+            value={bookedUser.email}
+            onChange={handleBooking}
+            name="email"
+            className="form-control forminput"
+            placeholder="Email"
+          />
+        </div>
+        <div className="form-group col-md-12">
+          <input
+            type="text"
+            id="phone"
+            value={bookedUser.phone}
+            onChange={handleBooking}
+            name="phone"
+            className="form-control forminput"
+            placeholder="Telefon"
+          />
+        </div>
+        <div className="form-group col-md-12">
+          <input
+            type="text"
+            id="comment"
+            value={bookedUser.comment}
+            onChange={handleBooking}
+            name="comment"
+            className="form-control forminput"
+            placeholder="Kommentar"
+          />
+        </div>
         <label>
-    <div className="qty col-2">
-        <p className="qtyheader">ANTAL</p>
-        <select
-        name="qty"
-        value={bookedUser.qty}
-        onChange={handleBooking}
-        >
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>
-    </div>
+          <div className="form-group col-md-12 gdprbox">
+            <input
+              type="checkbox"
+              onChange={handleBooking}
+              name="gdpr"
+              className="form-control checkboxgdpr"
+              required
+            />
+            <p className="checkboxgdprtext">
+              {" "}
+              * By clicking on this check box you agree that we handle your
+              personal data in accordance with GDPR. You can read more about
+              this under our Privacy Page.
+            </p>
+          </div>
         </label>
-</div>
-<div className="form-group col-md-12 ">
-    <input
-    type="text"
-    id="name"
-    value={bookedUser.name}
-    onChange={handleBooking}
-    name="name"
-    className="form-control forminput"
-    placeholder="Namn" />
-</div>
-<div className="form-group col-md-12">
-    <input
-    type="email"
-    id="email"
-    value={bookedUser.email}
-    onChange={handleBooking}
-    name="email"
-    className="form-control forminput"
-    placeholder="Email" />
-</div>
-<div className="form-group col-md-12">
-    <input type="text"
-        id="phone"
-        value={bookedUser.phone}
-        onChange={handleBooking}
-        name="phone"
-        className="form-control forminput"
-        placeholder="Telefon"
-    />
-</div>
-<div className="form-group col-md-12">
-    <input
-        type="text"
-        id="comment"
-        value={bookedUser.comment}
-        onChange={handleBooking}
-        name="comment"
-        className="form-control forminput"
-        placeholder="Kommentar"
-    />
-</div>
-<label>
-
-<div className="form-group col-md-12 gdprbox">
-    <input
-        type="checkbox"
-        onChange={handleBooking}
-        name="gdpr"
-        className="form-control checkboxgdpr"
-        required
-    />
-    <p className="checkboxgdprtext"> * By clicking on this check box you agree that we handle your personal data in accordance with GDPR. You can read more about this under our Privacy Page.</p>
-</div>
-    </label>
-<div className="form-group col-md-4 pull-right">
-    <button className="btn btn-success" type="submit" onClick={handleSubmit}>
-        Boka
-    </button>
-    <pre>{JSON.stringify(bookedUser, null, 3)}</pre>
-
-</div>
-</form>
-</div>
-)};
-
+        <div className="form-group col-md-4 pull-right">
+          <button
+            className="btn btn-success"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Boka
+          </button>
+          <pre>{JSON.stringify(bookedUser, null, 3)}</pre>
+        </div>
+      </form>
+    </div>
+  );
+}
 
 // class Create extends React.Component<RouteComponentProps, IFormState> {
 //     constructor(props: RouteComponentProps) {
@@ -363,6 +380,5 @@ return (
 //         </div>
 //     )}
 // };
-
 
 // export default withRouter(Create);
