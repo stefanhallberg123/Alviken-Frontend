@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./ModalForm.scss";
 import ModalGDPR from "./ModalGDPR/ModalGDPR";
 interface ISendFromForm {
@@ -9,6 +9,7 @@ export interface IUserValue {
   phone: string;
   comment: string;
   email: string;
+  error: string;
 }
 
 export default function ModalForm(props: ISendFromForm) {
@@ -18,6 +19,7 @@ export default function ModalForm(props: ISendFromForm) {
     phone: "",
     comment: "",
     email: "",
+    error: "",
   };
   // ändrar state från defaultValue till bookingUser när infon kommer in
   // samt kollar så att checkboxen är ifylld från ModalGDPR
