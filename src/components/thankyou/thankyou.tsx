@@ -13,7 +13,7 @@ export default function ThankYou() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="containerTH">
       <h2 className="thankyou">Tack för din bokning!</h2>
       <div className="bookingNR">Ditt bokningsnummer är : {data}</div>;
       <div className="greetings">Hälsningar</div>

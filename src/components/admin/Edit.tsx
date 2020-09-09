@@ -1,15 +1,16 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import axios from "axios";
+import Calendar from "react-calendar";
 import "./edit.scss";
 
-export interface IValues {
-  [key: string]: any;
-}
+// export interface IValues {
+//   [key: string]: any;
+// }
 export interface IFormState {
   id: number;
   customer: any;
-  values: IValues[];
+  values: any;
   submitSuccess: boolean;
   loading: boolean;
 }
@@ -23,7 +24,7 @@ class EditCustomer extends React.Component<
     this.state = {
       id: this.props.match.params.id,
       customer: {
-        date: "",
+        date: new Date(),
         comment: "",
         qty: [],
         timeslot: "",
@@ -67,13 +68,14 @@ class EditCustomer extends React.Component<
       });
   };
 
-  private setValues = (values: IValues) => {
+  private setValues = (values: any) => {
     this.setState({ values: { ...this.state.values, ...values } });
   };
 
   private handleInputChanges = (e: any) => {
     e.preventDefault();
     this.setValues({ [e.currentTarget.id]: e.currentTarget.value });
+    console.log(this.state);
   };
 
   public render() {
@@ -91,21 +93,18 @@ class EditCustomer extends React.Component<
             <div className="col-md-12 form-wrapper">
               <form
                 id={"create-post-form"}
-                onSubmit={this.processFormSubmission}
+                onSubmit={this.handleInputChanges}
                 noValidate={true}
               >
                 <div className="form-group col-md-12">
                   <div className="boxcontainer form-group col-md-12">
                     <div className="date col-2">
                       <p className="dateheader"> DATUM </p>
-                      <p className="dateinput">2020-10-01</p>
-                      {/* <input
-											type="date"
-											name="date"
-											value="2020-10-01"
-											placeholder=""
-											onChange={handleChange}
-										/> */}
+                      <input
+                        type="date"
+                        onChange={this.handleInputChanges}
+                        value={(this.state.values, "yyyy-MM-dd")}
+                      ></input>
                     </div>
                     <div className="timeslot col-4">
                       <p className="timeslotheader"> SITTNING </p>

@@ -1,4 +1,4 @@
-@import '../../sass/variables.scss';
+@import "../../sass/variables.scss";
 
 html {
   width: 100%;
@@ -7,10 +7,10 @@ html {
   text-align: center;
   box-sizing: border-box;
   .alert {
-      background-color: lightblue;
-      padding:10px;
-      border-radius: 10px;
-      margin-bottom: 10px;
+    background-color: lightblue;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
   }
   form {
     width: 100%;
@@ -18,145 +18,145 @@ html {
     padding: 0 auto;
     display: inline-block;
     .boxcontainer {
-        padding: 0 auto;
-        display: flex;
-        .date {
-            width: 180px;
-            height: 110px;
-            margin: 10px;
-            border: 1px solid $black;
-            .dateheader {
-                font-family: $mainfont;;
-                font-size: 14px;
-                float: left;
-                padding-left: 10px;
-            }
-            .dateinput {
-                margin-top: 50px;
-                border: none;
-                font-family: $logofont;
-                font-size: 24px;
-                background-color: transparent;
-                cursor: pointer;
-            }
+      padding: 0 auto;
+      display: flex;
+      .date {
+        width: 180px;
+        height: 110px;
+        margin: 10px;
+        border: 1px solid $black;
+        .dateheader {
+          font-family: $mainfont;
+          font-size: 14px;
+          float: left;
+          padding-left: 10px;
         }
-        .timeslot {
-            width: 157px;
-            height: 110px;
-            margin: 10px;
-            border: 1px solid $black;
-            .timeslotheader {
-                font-family: $mainfont;
-                font-size: 14px;
-                float: left;
-                padding-left: 10px;
-            }
-            ul {
-                padding: 0 auto;
-                list-style: none;
-                justify-content: center;
-                li {
-                    border: 1px solid grey;
-                    padding: 5px;
-                    display: inline-block;
-                    label {
-                        font-family: $logofont;
-                        cursor: pointer;
-                        .timeslotone {
-                            float: right;
-                        }
-                        input {
-                            visibility:hidden;
-                        }
-                        label:after {
-                            background: $gold;
-                            color: $white;
-                        }
-                        input:after {
-                            background: $gold;
-                            color: $white;
-                        }
-                    }
-                }
-            }
+        .dateinput {
+          margin-top: 50px;
+          border: none;
+          font-family: $logofont;
+          font-size: 24px;
+          background-color: transparent;
+          cursor: pointer;
         }
-            .qty {
-                width: 117px;
-                height: 110px;
-                margin: 10px;
-                border: 1px solid $black;
-
-                .qty select::-ms-expand {
-                    display: none;
-                }
-                .qtyheader {
-                    font-family: $mainfont;
-                    font-size: 14px;
-                    float: left;
-                    padding-left: 10px;
-                }
-                select {
-                    font-size: 24px;
-                    font-family: $logofont;
-                    margin-top:50px;
-                    margin-right: 44px;
-                    border: none;
-                    -moz-appearance: none;
-                    -webkit-appearance: none;
-                    .defaultoption {
-                        font-family: $logofont;
-                        font-size: 24px;
-                    }
-                }
-            }
+      }
+      .timeslot {
+        width: 157px;
+        height: 110px;
+        margin: 10px;
+        border: 1px solid $black;
+        .timeslotheader {
+          font-family: $mainfont;
+          font-size: 14px;
+          float: left;
+          padding-left: 10px;
         }
-        .forminput {
-            // width: 484px;
-            height: 43px;
-            border: 1px solid $black;
-            // margin-top: 15px;
-            padding-left: 10px;
-            color: $black;
-            font-family: $mainfont;
-        }
-        .gdpr {
-            width: 20px;
-            float: left;
-            margin-left: 10px;
-        }
-
-        // .gdprbox:checked ~ .checkmark{
-        //     background-color: $gold;
-            .checkboxgdpr {
-                margin-top: 10px;
-                height: 20px;
-                width: 20px;
-                float: left;
-            }
-        //         .checkboxgdpr ::after{
-        //             background-color: $white;
-        //         }
-        //     }
-        //     .checkboxgdprtext {
-        //         margin-top: 15px;
-        //         font-size: 14px;
-        //         font-family: $mainfont;
-        //     }
-        // }
-        button {
-            background: $gold;
-            font-family: $mainfont;
-            font-style: normal;
-            box-sizing: border-box;
-            font-weight: 800;
-            font-size: 23px;
-            line-height: 34px;
-            color: #ffffff;
-            border: none;
+        ul {
+          padding: 0 auto;
+          list-style: none;
+          justify-content: center;
+          li {
+            border: 1px solid grey;
+            padding: 5px;
             display: inline-block;
-            padding: 10px;
-            margin: 1%;
-            width: 25%;
+            label {
+              font-family: $logofont;
+              cursor: pointer;
+              .timeslotone {
+                float: right;
+              }
+              input {
+                visibility: hidden;
+              }
+              label:after {
+                background: $gold;
+                color: $white;
+              }
+              input:after {
+                background: $gold;
+                color: $white;
+              }
+            }
           }
+        }
+      }
+      .qty {
+        width: 117px;
+        height: 110px;
+        margin: 10px;
+        border: 1px solid $black;
+
+        .qty select::-ms-expand {
+          display: none;
+        }
+        .qtyheader {
+          font-family: $mainfont;
+          font-size: 14px;
+          float: left;
+          padding-left: 10px;
+        }
+        select {
+          font-size: 24px;
+          font-family: $logofont;
+          margin-top: 50px;
+          margin-right: 44px;
+          border: none;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          .defaultoption {
+            font-family: $logofont;
+            font-size: 24px;
+          }
+        }
+      }
     }
+    .forminput {
+      // width: 484px;
+      height: 43px;
+      border: 1px solid $black;
+      // margin-top: 15px;
+      padding-left: 10px;
+      color: $black;
+      font-family: $mainfont;
+    }
+    .gdpr {
+      width: 20px;
+      float: left;
+      margin-left: 10px;
+    }
+
+    // .gdprbox:checked ~ .checkmark{
+    //     background-color: $gold;
+    .checkboxgdpr {
+      margin-top: 10px;
+      height: 20px;
+      width: 20px;
+      float: left;
+    }
+    //         .checkboxgdpr ::after{
+    //             background-color: $white;
+    //         }
+    //     }
+    //     .checkboxgdprtext {
+    //         margin-top: 15px;
+    //         font-size: 14px;
+    //         font-family: $mainfont;
+    //     }
+    // }
+    button {
+      background: $gold;
+      font-family: $mainfont;
+      font-style: normal;
+      box-sizing: border-box;
+      font-weight: 800;
+      font-size: 23px;
+      line-height: 34px;
+      color: #ffffff;
+      border: none;
+      display: inline-block;
+      padding: 10px;
+      margin: 1%;
+      width: 25%;
+    }
+  }
 }

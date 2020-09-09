@@ -42,7 +42,7 @@ export default function ModalForm(props: ISendFromForm) {
 
   return (
     <div className="formDiv">
-      <form>
+      <form className="userform">
         <h1>Boka Bord</h1>
         <input
           className="name"
