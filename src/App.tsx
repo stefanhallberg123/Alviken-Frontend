@@ -10,6 +10,7 @@ import Create from "./components/admin/Create";
 import Edit from "./components/admin/Edit";
 import Modal from "./components/modal/Modal/Modal";
 import ThankYou from "./components/thankyou/thankyou";
+import LandingPage from "./components/landingpage/landingpage";
 // import Modal from './components/modal/Modal/Modal';
 
 export default function App() {
@@ -23,7 +24,7 @@ export default function App() {
         {/* <Route path={'/create'} exact component={Create} /> */}
         {/* <Route path={'/admin/create'} exact component={Create} /> */}
         {/* <Route path={'/admin'} exact component={Admin2}/> */}
-        {/* <Route path={'/'} exact component={Modal}/> */}
+        { <Route path={'/'} exact component={LandingPage}/>}
 
         <Route path={"/admin/create"} exact component={Create} />
         <Route path={"/admin/edit/:id"} exact component={Edit} />

@@ -1,15 +1,9 @@
 import React, {useState, ChangeEvent} from 'react';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
+//import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import "./landingpage.scss";
-<<<<<<< HEAD
-import Axios from 'axios';
-import { runInThisContext } from 'vm';
-
-=======
 import Axios from "axios";
 import DayPickerInput from "react-day-picker";
->>>>>>> 5bd7b8755672fa1f24bcfaae74aec677b08f3504
 export default function LandingPage() {
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedTime, setSelectedTime] = useState("18");
@@ -24,10 +18,12 @@ export default function LandingPage() {
 
 //+selectedDate+"&time="+selectedTime+"&people="+selectedPeople
         
-        Axios.get("http://localhost:5000/").then(bookings =>{
-            console.log(bookings.data)
+        Axios.post('http://localhost:5000/modal', JSON.stringify({
+        date: selectedDate,
+        time: selectedTime,
+        people: selectedPeople })).then(bookings =>{
+        console.log(bookings.data)
 
-<<<<<<< HEAD
             bookings.data.map((booking: any)=>{
                 console.log(booking)
             })
@@ -52,10 +48,6 @@ function handleDateSelect(day: string){
     
 }
 
-
-
-
-
     return (<div>
         <div className="landingpage-body">
             <section className="hero">
@@ -66,13 +58,12 @@ function handleDateSelect(day: string){
                     </div>
                     <form>
                         <div className="booking">
-
+{ 
                             <div className="day">
-                                <DayPickerInput onDayChange={day => {
-                                handleDateSelect(day.toISOString());
+                                <DayPickerInput onDayClick={(e)=>handleDateSelect(new Date(e.getDate()).toISOString())} 
                                 // setSelectedDate(day.toLocaleDateString());
-                                }}/> 
-                            </div> 
+                                /> 
+                            </div>  }
 
                             <div className="time">
                                 <select className="select-box" onChange={handleTimeSelect}>
@@ -104,54 +95,6 @@ function handleDateSelect(day: string){
             </section>
         </div>
     </div>)
-=======
-    Axios.get(
-      "http://localhost:5000/?date=" +
-        selectedDate +
-        "&time=" +
-        selectedTime +
-        "&people=" +
-        selectedPeople
-    )
-      .then((response) => response.data())
-      .then((bookings) => {
-        console.log(bookings);
-      });
-  }
-  function handleTimeSelect(e: ChangeEvent<HTMLSelectElement>) {
-    console.log(e.target.value);
-    setSelectedTime(e.target.value);
-  }
-  function handlePeopleSelect(e: ChangeEvent<HTMLSelectElement>) {
-    console.log(e.target.value);
-    setSelectedPeople(e.target.value);
-  }
-
-  return (
-    <div>
-      <div className="landingpage-body">
-        <section className="hero">
-          <div className="hero-inner">
-            <h1>Alviken</h1>
-            <h2>Välkommen att boka bord hos oss!</h2>
-            <form>
-              <div className="booking">
-                <div className="day">
-                  {/* <DayPickerInput
-                    onDayChange={(day: any) => {
-                      console.log(day.toLocaleDateString());
-                      setSelectedDate(day.toLocaleDateString());
-                    }}
-                  /> */}
-                </div>
-
-                <div className="time">
-                  <select onChange={handleTimeSelect}>
-                    <option value="18">18:00</option>
-                    <option value="21">21:00</option>
-                  </select>
-                </div>
->>>>>>> 5bd7b8755672fa1f24bcfaae74aec677b08f3504
 
 
 }
