@@ -4,7 +4,7 @@ import 'react-day-picker/lib/style.css';
 import "./landingpage.scss";
 import Axios from "axios";
 // import DayPickerInput from "react-day-picker";
-export default function LandingPage() {
+export default function LandingPage(props:any) {
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedTime, setSelectedTime] = useState("18");
     const [selectedPeople, setSelectedPeople] = useState("1");
@@ -12,27 +12,31 @@ export default function LandingPage() {
       
     
     function checkAvailability(){
-        console.log(selectedDate)
-        console.log(selectedTime)
-        console.log(selectedPeople)
+        props.setSelectedDate(selectedDate)
+        props.setSelecedtTime(selectedTime)
+        props.setSelecedtPeople(selectedPeople)
 
-//+selectedDate+"&time="+selectedTime+"&people="+selectedPeople
+        // console.log(selectedDate)
+        // console.log(selectedTime)
+        // console.log(selectedPeople)
+
+        // //+selectedDate+"&time="+selectedTime+"&people="+selectedPeople
         
-        Axios.post('http://localhost:5000/modal', JSON.stringify({
-        date: selectedDate,
-        time: selectedTime,
-        people: selectedPeople })).then(bookings =>{
-        console.log(bookings.data)
+        // Axios.post('http://localhost:5000/modal', JSON.stringify({
+        // date: selectedDate,
+        // time: selectedTime,
+        // people: selectedPeople })).then(bookings =>{
+        // console.log(bookings.data)
 
-            bookings.data.map((booking: any)=>{
-                console.log(booking)
-            })
-        })
+        //     bookings.data.map((booking: any)=>{
+        //         console.log(booking)
+        //     })
+        // })
     }
       function handleTimeSelect(e: ChangeEvent<HTMLSelectElement>){
         
             console.log(e.target.value)
-            setSelectedTime(e.target.value);
+           setSelectedTime(e.target.value);
             
     }
     function handlePeopleSelect(e: ChangeEvent<HTMLSelectElement>){
@@ -44,7 +48,7 @@ export default function LandingPage() {
 
 function handleDateSelect(day: string){
     
-    setSelectedDate(day.replace("T10:00:00.000Z", ""))
+   console.log(day)
     
 }
 
@@ -60,9 +64,8 @@ function handleDateSelect(day: string){
                         <div className="booking">
 { 
                             <div className="day">
-                                <DayPickerInput onDayClick={(e:any)=>handleDateSelect(new Date(e.getDate()).toISOString())} 
-                                // setSelectedDate(day.toLocaleDateString());
-                                /> 
+                                <input type="date" onChange={(e:any)=>handleDateSelect(e.target.value)}></input>
+                                {/* <DayPickerInput onDayClick={(e:any)=>handleDateSelect(new Date(e.getDate()).toISOString())} />  */}
                             </div>  }
 
                             <div className="time">
