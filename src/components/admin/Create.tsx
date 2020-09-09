@@ -146,6 +146,7 @@ return (
     />
 </div>
 <label>
+
 <div className="form-group col-md-12 gdprbox">
     <input
         type="checkbox"

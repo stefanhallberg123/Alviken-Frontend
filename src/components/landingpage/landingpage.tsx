@@ -1,10 +1,10 @@
 import React, { useState, ChangeEvent } from "react";
 import "./landingpage.scss";
 import Axios from "axios";
-import Reactmodal from "react-modal";
-
+// import DayPickerInput from "react-day-picker";
 export default function LandingPage() {
-  const [selectedDate, setSelectedDate] = useState("");
+  // const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate ] = useState("");
   const [selectedTime, setSelectedTime] = useState("18");
   const [selectedPeople, setSelectedPeople] = useState("1");
 
@@ -45,13 +45,12 @@ export default function LandingPage() {
             <form>
               <div className="booking">
                 <div className="day">
-                  {/* <DayPickerInput */}
-                  onDayChange=
-                  {(day: any) => {
-                    console.log(day.toLocaleDateString());
-                    setSelectedDate(day.toLocaleDateString());
-                  }}
-                  {/* /> */}
+                  {/* <DayPickerInput
+                    onDayChange={(day: any) => {
+                      console.log(day.toLocaleDateString());
+                      setSelectedDate(day.toLocaleDateString());
+                    }}
+                  /> */}
                 </div>
 
                 <div className="time">

@@ -3,12 +3,8 @@ import { RouteComponentProps, withRouter} from 'react-router-dom';
 import axios from 'axios';
 import './edit.scss'
 
-// Create state for qty
-
-
-
 export interface IValues {
-    [key: string]: any;
+  [key: string]: any;
 }
 export interface IFormState {
     id: number,
@@ -407,4 +403,3 @@ public render() {
 //     </div>
 //   );
 // }
-
