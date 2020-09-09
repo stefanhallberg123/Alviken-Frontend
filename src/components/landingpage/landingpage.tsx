@@ -1,9 +1,10 @@
 import React, { useState, ChangeEvent } from "react";
 import "./landingpage.scss";
 import Axios from "axios";
-import DayPickerInput from "react-day-picker";
+// import DayPickerInput from "react-day-picker";
 export default function LandingPage() {
-  const [selectedDate, setSelectedDate] = useState("");
+  // const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate ] = useState("");
   const [selectedTime, setSelectedTime] = useState("18");
   const [selectedPeople, setSelectedPeople] = useState("1");
 
