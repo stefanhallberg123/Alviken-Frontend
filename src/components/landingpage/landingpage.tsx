@@ -2,15 +2,15 @@ import React, {useState, ChangeEvent} from 'react';
 //import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import "./landingpage.scss";
-import Axios from "axios";
+// import Axios from "axios";
 // import DayPickerInput from "react-day-picker";
 export default function LandingPage(props:any) {
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedTime, setSelectedTime] = useState("18");
     const [selectedPeople, setSelectedPeople] = useState("1");
 
-      
-    
+
+
     function checkAvailability(){
         props.setSelectedDate(selectedDate)
         props.setSelecedtTime(selectedTime)
@@ -21,7 +21,7 @@ export default function LandingPage(props:any) {
         // console.log(selectedPeople)
 
         // //+selectedDate+"&time="+selectedTime+"&people="+selectedPeople
-        
+
         // Axios.post('http://localhost:5000/modal', JSON.stringify({
         // date: selectedDate,
         // time: selectedTime,
@@ -34,22 +34,22 @@ export default function LandingPage(props:any) {
         // })
     }
       function handleTimeSelect(e: ChangeEvent<HTMLSelectElement>){
-        
+
             console.log(e.target.value)
            setSelectedTime(e.target.value);
-            
+
     }
     function handlePeopleSelect(e: ChangeEvent<HTMLSelectElement>){
-        
+
         console.log(e.target.value)
         setSelectedPeople(e.target.value);
-        
+
 }
 
 function handleDateSelect(day: string){
-    
+
    console.log(day)
-    
+
 }
 
     return (<div>
@@ -62,7 +62,7 @@ function handleDateSelect(day: string){
                     </div>
                     <form>
                         <div className="booking">
-{ 
+{
                             <div className="day">
                                 <input type="date" onChange={(e:any)=>handleDateSelect(e.target.value)}></input>
                                 {/* <DayPickerInput onDayClick={(e:any)=>handleDateSelect(new Date(e.getDate()).toISOString())} />  */}
@@ -86,15 +86,15 @@ function handleDateSelect(day: string){
                                 </select>
                             </div>
                                 <div className="book-button">
-                            <button type="button" 
+                            <button type="button"
                                 onClick={checkAvailability}>
                                 Boka
                             </button>
                             </div>
                         </div>
-                    </form> 
-                    
-                </div> 
+                    </form>
+
+                </div>
             </section>
         </div>
     </div>)
