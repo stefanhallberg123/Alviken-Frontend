@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import axios from "axios";
-import "./Create.scss";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import './editandremove.scss'
+import AdminNav from './nav'
 
 export interface IValues {
   name: string;
@@ -33,352 +35,150 @@ export default function Create() {
   };
 
   const handleSubmit = (e: any) => {
+    e.preventDefault();
     axios
       .post("http://localhost:5000/admin/create", bookedUser)
       .then((res) => {
         console.log(res.data, "Create1");
       })
-      .catch((error) => {
-        console.log(error.response);
-      });
-    console.log(bookedUser, "Create2");
-  };
-  console.log(bookedUser);
-  return (
-    <div>
-      <form id={"create-post-form"}>
-        <div className="boxcontainer form-group col-md-12">
-          <div className="col-2 date">
-            <p className="dateheader"> DATUM </p>
-            <input
-              type="date"
-              name="date"
-              onChange={handleBooking}
-              value={bookedUser.date}
-            />
-          </div>
-          <div className="timeslot col-4">
-            <p className="timeslotheader"> SITTNING </p>
-            <ul>
-              <li>
-                <label htmlFor="radio1">
-                  18:00
-                  <input
-                    className="timeslotone"
-                    type="radio"
-                    id="radio1"
-                    name="timeslot"
-                    checked={bookedUser.timeslot === "18:00"}
-                    value={"18:00"}
-                    onChange={handleBooking}
-                    required
-                  />
+        console.log(bookedUser, "Create2")
+
+    }
+    console.log(bookedUser)
+
+return (
+    <div className="App">
+        <AdminNav></AdminNav>
+        <h2>LÄGG TILL BOKNING</h2>
+        <form id={"create-post-form"} className="form">
+            <div className="boxcontainer form-group col-md-12">
+                <div className="col-2 date">
+                    <p className="dateheader">DATUM </p>
+                    <input
+                        type="date"
+                        name="date"
+                        onChange={handleBooking}
+                        defaultValue={bookedUser.date}
+                    />
+                </div>
+                <div className="timeslot col-4">
+                    <p className="timeslotheader"> SITTNING </p>
+
+                    <div className="radio-toolbar">
+                        <input
+                            className="timeslotone"
+                            type="radio"
+                            id="radio1"
+                            name="timeslot"
+                            defaultValue={'18:00'}
+                            checked={bookedUser.timeslot === "18:00"}
+                            onChange={handleBooking}
+                            required
+                        />
+                        <p>&nbsp;</p>
+                        <label htmlFor="radio1">18:00</label>
+                        <input
+                            className="timeslotone"
+                            type="radio"
+                            id="radio2"
+                            name="timeslot"
+                            checked={bookedUser.timeslot === "21:00"}
+                            defaultValue={'21:00'}
+                            onChange={handleBooking}
+                            required/>
+                        <label htmlFor="radio2">21:00</label>
+                    </div>
+                </div>
+                <label>
+                    <div className="qtybox col-2">
+                        <p className="qtyheader">ANTAL</p>
+                        <select
+                            name="qty"
+                            defaultValue={bookedUser.qty}
+                            onChange={handleBooking}
+                            required
+                            >
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
                 </label>
-              </li>
-              <li>
-                <label htmlFor="radio2">
-                  21:00
-                  <input
-                    className="timeslotinput form-control"
-                    type="radio"
-                    id="radio2"
-                    name="timeslot"
-                    checked={bookedUser.timeslot === "21:00"}
-                    value={"21:00"}
-                    onChange={handleBooking}
-                    required
-                  />
-                </label>
-              </li>
-            </ul>
-          </div>
-          <label>
-            <div className="qty col-2">
-              <p className="qtyheader">ANTAL</p>
-              <select
-                name="qty"
-                value={bookedUser.qty}
-                onChange={handleBooking}
-              >
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-              </select>
             </div>
-          </label>
-        </div>
-        <div className="form-group col-md-12 ">
-          <input
-            type="text"
-            id="name"
-            value={bookedUser.name}
-            onChange={handleBooking}
-            name="name"
-            className="form-control forminput"
-            placeholder="Namn"
-          />
-        </div>
-        <div className="form-group col-md-12">
-          <input
-            type="email"
-            id="email"
-            value={bookedUser.email}
-            onChange={handleBooking}
-            name="email"
-            className="form-control forminput"
-            placeholder="Email"
-          />
-        </div>
-        <div className="form-group col-md-12">
-          <input
-            type="text"
-            id="phone"
-            value={bookedUser.phone}
-            onChange={handleBooking}
-            name="phone"
-            className="form-control forminput"
-            placeholder="Telefon"
-          />
-        </div>
-        <div className="form-group col-md-12">
-          <input
-            type="text"
-            id="comment"
-            value={bookedUser.comment}
-            onChange={handleBooking}
-            name="comment"
-            className="form-control forminput"
-            placeholder="Kommentar"
-          />
-        </div>
-        <label>
-          <div className="form-group col-md-12 gdprbox">
-            <input
-              type="checkbox"
-              onChange={handleBooking}
-              name="gdpr"
-              className="form-control checkboxgdpr"
-              required
-            />
-            <p className="checkboxgdprtext">
-              {" "}
-              * By clicking on this check box you agree that we handle your
-              personal data in accordance with GDPR. You can read more about
-              this under our Privacy Page.
-            </p>
-          </div>
-        </label>
-        <div className="form-group col-md-4 pull-right">
-          <button
-            className="btn btn-success"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            Boka
-          </button>
-          <pre>{JSON.stringify(bookedUser, null, 3)}</pre>
-        </div>
-      </form>
-    </div>
-  );
-}
 
-// class Create extends React.Component<RouteComponentProps, IFormState> {
-//     constructor(props: RouteComponentProps) {
-//         super(props);
-//         this.state = {
-//             name: '',
-//             email: '',
-//             phone: '',
-//             comment: '',
-//             date: '',
-//             timeslot: '',
-//             qty: '0',
-//             gdpr: false,
-//             values: [],
-//             loading: false,
-//             submitSuccess: false
-//         }
-//         console.log(this.state, "create1")
-//     }
+            <div className="form-group col-md-12 ">
+                <input
+                    type="text"
+                    id="name"
+                    value={bookedUser.name}
+                    onChange={handleBooking}
+                    name="name"
+                    className="form-control forminput"
+                    placeholder="Namn"
+                    required/>
+            </div>
+            <div className="form-group col-md-12">
+                <input
+                    type="email"
+                    id="email"
+                    value={bookedUser.email}
+                    onChange={handleBooking}
+                    name="email"
+                    className="form-control forminput"
+                    placeholder="Email"
+                    required
+                />
+            </div>
+            <div className="form-group col-md-12">
+                <input type="text"
+                    id="phone"
+                    value={bookedUser.phone}
+                    onChange={handleBooking}
+                    name="phone"
+                    className="form-control forminput"
+                    placeholder="Telefon"
+                    required/>
+            </div>
+            <div className="form-group col-md-12">
+                <input type="text"
+                    id="comment"
+                    value={bookedUser.comment}
+                    onChange={handleBooking}
+                    name="comment"
+                    className="form-control forminput"
+                    placeholder="Kommentar"
+                    required/>
+            </div>
+                <label>
+            <div className="form-group col-md-12 gdprbox">
+                <input
+                    type="checkbox"
+                    onChange={handleBooking}
+                    name="gdpr"
+                    className="form-control checkboxgdpr"
+                    required
+                />
+                <p className="checkboxgdprtext">
+                * By clicking on this check box you agree that we handle your personal data in accordance with GDPR. You can read more about this under our Privacy Page.
+                </p>
+            </div>
+                </label>
+            <div className="form-group col-md-4 pull-right">
+                <button className="btn" type="submit" onClick={handleSubmit}>
+                    <p>Boka</p>
+                </button>
+                <Link to='/admin' ><button className="btn" type="submit">
+                    <p>Tillbaka</p>
+                </button></Link>
+                <pre>
+                    {JSON.stringify(bookedUser, null, 3)}
+                </pre>
 
-//     private processFormSubmission = (e: React.FormEvent<HTMLFormElement>): void => {
-//         e.preventDefault();
-//         this.setState({ loading: true });
-//         const formData = {
-//             name: this.state.name,
-//             email: this.state.email,
-//             phone: this.state.phone,
-//             comment: this.state.comment,
-//             date: this.state.date,
-//             timeslot: this.state.timeslot,
-//             qty: this.state.qty,
-//             gdpr: this.state.gdrp,
-//         }
-//         console.log(formData, "create2")
-//         this.setState({ submitSuccess: true,
-//             values: [...this.state.values, formData], loading: false });
-//         axios.post("http://localhost:5000/admin", formData).then(data => [
-//             setTimeout(() => {
-//                 this.props.history.push('/admin');
-//             }, 1500)
-//         ]);
-//     }
-
-//     private handleChange = (e: any) => {
-//         e.preventDefault();
-//         this.setState({
-//             [e.currentTarget.name]: e.currentTarget.value,
-//     })
-// }
-
-// public render() {
-//     const { submitSuccess, loading } = this.state;
-//     return (
-//         <div>
-//             <div className={"col-md-12 form-wrapper"}>
-//                 <h2> Lägg till Bokning </h2>
-//                 {!submitSuccess && (
-//                     <div className="alert alert-info" role="alert">
-//                         Fyll i formuläret nedan för att lägga till en bokning
-//                 </div>
-//                 )}
-//                 {submitSuccess && (
-//                     <div className="alert alert-info" role="alert">
-//                         Bokningen är genomförd.
-//                         </div>
-//                 )}
-//                 <form id={"create-post-form"} onSubmit={this.processFormSubmission} noValidate={true}>
-
-//                     <div className="boxcontainer form-group col-md-12">
-//                         <div className="col-2 date">
-//                             <p className="dateheader"> DATUM </p>
-//                             <p className="dateinput">2020-10-01</p>
-//                             {/* <input
-//                                 type="date"
-//                                 className="dateinput"
-//                                 name="date"
-//                                 value="2020-10-01"
-//                                 onChange={(e) => this.handleChange(e)}
-//                             /> */}
-//                         </div>
-//                         <div className="timeslot col-4">
-// 				            <p className="timeslotheader"> SITTNING </p>
-//                             <ul>
-//                                 <li>
-//                                     <label htmlFor="radio1">18:00
-//                                         <input
-//                                             className="timeslotone"
-//                                             type="radio"
-//                                             id="radio1"
-//                                             name="timeslot"
-//                                             value="18:00"
-//                                             checked={this.state.timeslot === "18:00"}
-//                                             onChange={(e) => this.handleChange(e)}
-//                                         />
-//                                     </label>
-//                                 </li>
-//                                 <li>
-//                                     <label htmlFor="radio2">21:00
-//                                         <input
-//                                             className="timeslotinput form-control"
-//                                             type="radio"
-//                                             id="radio2"
-//                                             name="timeslot"
-//                                             value="21:00"
-//                                             checked={this.state.timeslot === "21:00"}
-//                                             onChange={(e) => this.handleChange(e)}
-//                                             required
-//                                         />
-//                                     </label>
-//                                 </li>
-//                             </ul>
-//                         </div>
-//                             <label>
-//                         <div className="qty col-2">
-//                             <p className="qtyheader">ANTAL</p>
-//                             <select
-//                             name="qty"
-//                             onChange={e => this.handleChange(e)}
-//                             >
-//                                 <option value="0">0</option>
-//                                 <option value="1">1</option>
-//                                 <option value="2">2</option>
-//                                 <option value="3">3</option>
-//                                 <option value="4">4</option>
-//                                 <option value="5">5</option>
-//                                 <option value="6">6</option>
-//                             </select>
-//                         </div>
-//                             </label>
-//                     </div>
-//                     <div className="form-group col-md-12 ">
-//                         <input
-//                         type="text"
-//                         id="name"
-//                         onChange={(e) => this.handleChange(e)}
-//                         name="name"
-//                         className="form-control forminput"
-//                         placeholder="Namn" />
-//                     </div>
-//                     <div className="form-group col-md-12">
-//                         <input
-//                         type="email"
-//                         id="email"
-//                         onChange={(e) => this.handleChange(e)}
-//                         name="email"
-//                         className="form-control forminput"
-//                         placeholder="Email" />
-//                     </div>
-//                     <div className="form-group col-md-12">
-//                         <input type="text"
-//                             id="phone"
-//                             onChange={(e) => this.handleChange(e)}
-//                             name="phone"
-//                             className="form-control forminput"
-//                             placeholder="Telefon"
-//                         />
-//                     </div>
-//                     <div className="form-group col-md-12">
-//                         <input
-//                             type="text"
-//                             id="comment"
-//                             onChange={(e) => this.handleChange(e)}
-//                             name="comment"
-//                             className="form-control forminput"
-//                             placeholder="Kommentar"
-//                         />
-//                     </div>
-//                     <label>
-//                     <div className="form-group col-md-12 gdprbox">
-//                         <input
-//                             type="checkbox"
-//                             value={this.state.gdpr}
-//                             onChange={(e) => this.handleChange(e)}
-//                             name="gdpr"
-//                             className="form-control checkboxgdpr"
-//                             required
-//                         />
-//                         <p className="checkboxgdprtext"> * By clicking on this check box you agree that we handle your personal data in accordance with GDPR. You can read more about this under our Privacy Page.</p>
-//                     </div>
-//                         </label>
-//                     <div className="form-group col-md-4 pull-right">
-//                         <button className="btn btn-success" type="submit">
-//                             Boka
-//                         </button>
-//                         {loading &&
-//                             <span className="fa fa-circle-o-notch fa-spin" />
-//                         }
-//                     </div>
-//                 </form>
-//             </div>
-//             <pre>{JSON.stringify(this.state, null, 3)}</pre>
-//         </div>
-//     )}
-// };
-
-// export default withRouter(Create);
+            </div>
+    </form>
+</div>
+)};

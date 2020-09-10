@@ -1,7 +1,8 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import axios from "axios";
-import "./edit.scss";
+import "./editandremove.scss";
+import AdminNav from "./nav";
 
 // export interface IValues {
 //   [key: string]: any;
@@ -81,6 +82,7 @@ class EditCustomer extends React.Component<
     const { submitSuccess, loading } = this.state;
     return (
       <div className="App">
+        <AdminNav></AdminNav>
         {this.state.customer && (
           <div className={"col-md-12 form-wrapper"}>
             <h2> EDITERA BOKNING</h2>
@@ -91,6 +93,7 @@ class EditCustomer extends React.Component<
             )}
             <div className="col-md-12 form-wrapper">
               <form
+                className="form"
                 id={"create-post-form"}
                 onSubmit={this.handleInputChanges}
                 noValidate={true}
@@ -100,58 +103,47 @@ class EditCustomer extends React.Component<
                     <div className="date col-2">
                       <p className="dateheader"> DATUM </p>
                       <input
+                        className="datenumber"
                         type="date"
                         onChange={this.handleInputChanges}
-                        value={(this.state.values, "yyyy-MM-dd")}
-                      ></input>
+                        value={this.state.customer.date}
+                        // value={(this.state.values, "yyyy-MM-dd")}
+                      />
                     </div>
                     <div className="timeslot col-4">
                       <p className="timeslotheader"> SITTNING </p>
-                      <ul>
-                        <li>
-                          <label htmlFor="radio1">
-                            18:00
-                            <input
-                              className="timeslotone"
-                              type="radio"
-                              id="radio1"
-                              name="timeslot"
-                              value="18:00"
-                              checked={this.state.customer.timeslot === "18:00"}
-                              onChange={(e) => this.handleInputChanges(e)}
-                            />
-                          </label>
-                        </li>
-                        <li>
-                          <label htmlFor="radio2">
-                            21:00
-                            <input
-                              className="timeslotinput for m-control"
-                              type="radio"
-                              id="radio2"
-                              name="timeslot"
-                              value="21:00"
-                              checked={this.state.customer.timeslot === "21:00"}
-                              onChange={(e) => this.handleInputChanges(e)}
-                              required
-                            />
-                          </label>
-                        </li>
-                      </ul>
+                      <p>&nbsp;</p>
+
+                      <div className="radio-toolbar">
+                        <input
+                          className="timeslotone"
+                          type="radio"
+                          id="radio1"
+                          name="timeslot"
+                          checked={this.state.customer.timeslot === "18:00"}
+                          onChange={this.handleInputChanges}
+                          required
+                        />
+                        <label htmlFor="radio1">18:00</label>
+                        <input
+                          className="timeslotone"
+                          type="radio"
+                          id="radio2"
+                          name="timeslot"
+                          checked={this.state.customer.timeslot === "21:00"}
+                          onChange={this.handleInputChanges}
+                          required
+                        />
+                        <label htmlFor="radio2">21:00</label>
+                      </div>
                     </div>
                     <label>
-                      <div className="qty col-2">
+                      <div className="qtybox col-2">
                         <p className="qtyheader">ANTAL</p>
                         <select
-                          value={this.state.customer.qty}
-                          onChange={() => this.setState({})}
-                        >
-                          {/* {this.state.customer.map((qty: any) =><option key={qty.value} value={qty.value}>{qty.display}</option>)} */}
-                        </select>
-                        <select
                           name="qty"
-                          defaultValue={this.state.customer.qty}
-                          onChange={(e) => this.handleInputChanges(e)}
+                          value={this.state.customer.qty}
+                          onChange={this.handleInputChanges}
                           required
                         >
                           <option value="1">1</option>
@@ -168,8 +160,8 @@ class EditCustomer extends React.Component<
                     <input
                       type="text"
                       name="name"
-                      defaultValue={this.state.customer.name}
-                      onChange={(e) => this.handleInputChanges(e)}
+                      value={this.state.customer.user.name}
+                      onChange={this.handleInputChanges}
                       placeholder="Namn"
                       className="form-control forminput"
                       required
@@ -179,8 +171,8 @@ class EditCustomer extends React.Component<
                     <input
                       type="text"
                       name="phone"
-                      defaultValue={this.state.customer.phone}
-                      onChange={(e) => this.handleInputChanges(e)}
+                      value={this.state.customer.user.phone}
+                      onChange={this.handleInputChanges}
                       placeholder="Telefon"
                       className="form-control forminput"
                       required
@@ -190,8 +182,8 @@ class EditCustomer extends React.Component<
                     <input
                       type="text"
                       name="email"
-                      defaultValue={this.state.customer.email}
-                      onChange={(e) => this.handleInputChanges(e)}
+                      value={this.state.customer.user.email}
+                      onChange={this.handleInputChanges}
                       placeholder="Email"
                       className="form-control forminput"
                       required
@@ -200,8 +192,8 @@ class EditCustomer extends React.Component<
                   <div className="form-group col-md-12 ">
                     <textarea
                       name="comment"
-                      defaultValue={this.state.customer.comment}
-                      onChange={(e) => this.handleInputChanges(e)}
+                      value={this.state.customer.comment}
+                      onChange={this.handleInputChanges}
                       className="form-control forminput"
                       placeholder="Kommentar"
                     />
@@ -210,9 +202,9 @@ class EditCustomer extends React.Component<
                     <input
                       type="checkbox"
                       name="gdpr"
-                      defaultValue={this.state.customer.gdpr}
-                      onChange={(e) => this.handleInputChanges(e)}
-                      className="form-control forminput gdpr"
+                      value={this.state.customer.gdpr}
+                      onChange={this.handleInputChanges}
+                      className="form-control forminput checkboxgdpr"
                       required
                     />
                     <p className="checkboxgdprtext">

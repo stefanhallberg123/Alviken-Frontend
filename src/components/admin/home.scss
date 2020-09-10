@@ -1,6 +1,7 @@
 @import '../../sass/variables.scss';
 
 .container {
+
     .row {
         table {
             width: 100%;
@@ -8,7 +9,9 @@
                 background: $gold;
                 th {
                     padding: 10px;
-
+                    font-family: $mainfont;
+                    font-weight: normal;
+                    color: $white;
                 }
 
             }
@@ -27,6 +30,9 @@
                         border: none;
                         background: transparent;
                     }
+                }
+                .text-center {
+                    text-align:center;
                 }
             }
         }

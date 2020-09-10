@@ -35,7 +35,7 @@ export default function LandingPage(props:ISendData) {
         // console.log(selectedPeople)
 
         // //+selectedDate+"&time="+selectedTime+"&people="+selectedPeople
-        
+
         // Axios.post('http://localhost:5000/modal', JSON.stringify({
         // date: selectedDate,
         // time: selectedTime,
@@ -84,7 +84,7 @@ setOpenModal(true)
                     {openModal?<Modal date={selectedDate} time={selectedTime} people={selectedPeople}></Modal>:
                     <form>
                         <div className="booking">
-{ 
+{
                             <div className="day">
                                 <input type="date" name="date"  onChange={handleData} required></input>
                                 {/* <DayPickerInput onDayClick={(e:any)=>handleDateSelect(new Date(e.getDate()).toISOString())} />  */}
