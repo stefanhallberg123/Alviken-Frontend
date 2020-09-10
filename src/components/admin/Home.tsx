@@ -22,19 +22,19 @@ export default class Home extends React.Component<RouteComponentProps, IState> {
         })
     }
     public deleteBooking(id: number) {
-        axios.delete(`http://localhost:5000/admin/delete/${id}`).then(data => {
+        axios.delete(`http://localhost:5000/admin/delete/:${id}`).then(data => {
             console.log(data, 'home3')
             const index = this.state.booking.findIndex(booking => {
                 return booking._id === id;
             });
             this.state.booking.splice(index, 1);
-            this.props.history.push('/admin');
+            this.props.history.push('/');
             console.log(index, "home 4")
         });
     }
 
     public render() {
-        // const booking = this.state.booking;
+        // const customer = this.state.booking;
         console.log(this.state, "strumpa")
         let trs = this.state.booking.map(customer => {
             return (

@@ -35,6 +35,7 @@ export default function Create() {
   };
 
   const handleSubmit = (e: any) => {
+    e.preventDefault();
     axios
       .post("http://localhost:5000/admin/create", bookedUser)
       .then((res) => {
@@ -53,7 +54,12 @@ return (
             <div className="boxcontainer form-group col-md-12">
                 <div className="col-2 date">
                     <p className="dateheader">DATUM </p>
-                    <p className="dateinput">2020-10-01</p>
+                    <input
+                        type="date"
+                        name="date"
+                        onChange={handleBooking}
+                        defaultValue={bookedUser.date}
+                    />
                 </div>
                 <div className="timeslot col-4">
                     <p className="timeslotheader"> SITTNING </p>
@@ -64,8 +70,8 @@ return (
                             type="radio"
                             id="radio1"
                             name="timeslot"
+                            defaultValue={'18:00'}
                             checked={bookedUser.timeslot === "18:00"}
-                            value={'18:00'}
                             onChange={handleBooking}
                             required
                         />
@@ -77,7 +83,7 @@ return (
                             id="radio2"
                             name="timeslot"
                             checked={bookedUser.timeslot === "21:00"}
-                            value={'21:00'}
+                            defaultValue={'21:00'}
                             onChange={handleBooking}
                             required/>
                         <label htmlFor="radio2">21:00</label>
@@ -88,7 +94,7 @@ return (
                         <p className="qtyheader">ANTAL</p>
                         <select
                             name="qty"
-                            value={bookedUser.qty}
+                            defaultValue={bookedUser.qty}
                             onChange={handleBooking}
                             required
                             >
