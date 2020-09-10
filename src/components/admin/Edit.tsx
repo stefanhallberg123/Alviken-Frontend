@@ -1,7 +1,6 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import axios from "axios";
-import Calendar from "react-calendar";
 import "./edit.scss";
 
 // export interface IValues {
