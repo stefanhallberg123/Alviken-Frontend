@@ -221,10 +221,6 @@ class EditCustomer extends React.Component<
                 </div>
               </form>
             </div>
-<<<<<<< HEAD
-            {/* <pre>{JSON.stringify(this.state, this.state.customer, 3)}</pre> */}
-=======
->>>>>>> isabelle
           </div>
         )}
       </div>
