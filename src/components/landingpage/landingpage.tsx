@@ -74,7 +74,6 @@ setOpenModal(true)
 
     return (
     <div>
-        <Modal setOpenModal={openModal}></Modal>
         <div className="landingpage-body">
             <section className="hero">
                 <div className="hero-inner">
@@ -82,6 +81,7 @@ setOpenModal(true)
                     <h1>Alviken</h1>
                     <h2>Välkommen att boka bord hos oss!</h2>
                     </div>
+                    {openModal?<Modal date={selectedDate} time={selectedTime} people={selectedPeople}></Modal>:
                     <form>
                         <div className="booking">
 { 
@@ -116,7 +116,7 @@ setOpenModal(true)
 
                             </div>
                         </div>
-                    </form> 
+                    </form> }
                     
                         
                     
