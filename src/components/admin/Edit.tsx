@@ -4,9 +4,9 @@ import axios from "axios";
 import "./editandremove.scss";
 import AdminNav from "./nav";
 
-// export interface IValues {
-//   [key: string]: any;
-// }
+export interface IValues {
+  [key: string]: any;
+}
 export interface IFormState {
   id: number;
   customer: any;
@@ -68,11 +68,11 @@ class EditCustomer extends React.Component<
       });
   };
 
-  private setValues = (values: any) => {
+  private setValues = (values: IValues) => {
     this.setState({ values: { ...this.state.values, ...values } });
   };
 
-  private handleInputChanges = (e: any) => {
+  private handleInputChanges = (e: IValues) => {
     e.preventDefault();
     this.setValues({ [e.currentTarget.id]: e.currentTarget.value });
     console.log(this.state);
@@ -226,7 +226,7 @@ class EditCustomer extends React.Component<
                 </div>
               </form>
             </div>
-            <pre>{JSON.stringify(this.state, this.state.customer, 3)}</pre>
+            {/* <pre>{JSON.stringify(this.state, this.state.customer, 3)}</pre> */}
           </div>
         )}
       </div>
