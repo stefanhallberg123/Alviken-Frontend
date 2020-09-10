@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ModalForm.scss";
 import ModalGDPR from "./ModalGDPR/ModalGDPR";
+import { Link } from "react-router-dom";
 interface ISendFromForm {
   updateValue(bookingUser: IUserValue): void;
 }
@@ -86,8 +87,9 @@ export default function ModalForm(props: ISendFromForm) {
           type="submit"
           onClick={handleSubmit}
         >
-          BOKA
+          <p>BOKA</p>
         </button>
+        <Link to="/"><button className="button" type="submit"><p>TILLBAKA</p></button></Link>
       </form>
     </div>
   );
