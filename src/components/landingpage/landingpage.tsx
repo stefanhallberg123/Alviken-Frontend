@@ -10,7 +10,7 @@ interface ISendData {
 }
 
 export default function LandingPage(props: ISendData) {
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("18");
   const [selectedPeople, setSelectedPeople] = useState("1");
   const [openModal, setOpenModal] = useState(false);
@@ -27,46 +27,9 @@ export default function LandingPage(props: ISendData) {
   };
   console.log(allData);
 
-  // console.log(selectedDate)
-  // console.log(selectedTime)
-  // console.log(selectedPeople)
-
-  // //+selectedDate+"&time="+selectedTime+"&people="+selectedPeople
-
-  // Axios.post('http://localhost:5000/modal', JSON.stringify({
-  // date: selectedDate,
-  // time: selectedTime,
-  // people: selectedPeople })).then(bookings =>{
-  // console.log(bookings.data)
-
-  //     bookings.data.map((booking: any)=>{
-  //         console.log(booking)
-  //     })
-  // })
-
-  //   function handleTimeSelect(e: ChangeEvent<HTMLSelectElement>){
-
-  //         console.log(e.target.value)
-  //        setSelectedTime(e.target.value);
-
-  // }
-  // function handlePeopleSelect(e: ChangeEvent<HTMLSelectElement>){
-
-  //         console.log(e.target.value)
-  //         setSelectedPeople(e.target.value);
-
-  // }
-
-  // function handleDateSelect(day: string){
-
-  //    console.log(day)
-
-  // }
-
   const checkAvailability = (e: any) => {
     setAllData(allData);
     setOpenModal(true);
-    e.preventDefault();
   };
 
   return (

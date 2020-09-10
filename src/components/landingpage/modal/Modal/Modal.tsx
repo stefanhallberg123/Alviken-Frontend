@@ -5,7 +5,7 @@ import "./Modal.scss";
 import ModalForm, { IUserValue } from "./../ModalForm/ModalForm";
 
 export interface IModalProps {
-  date: string;
+  date: Date;
   time: string;
   people: string;
 }
@@ -24,12 +24,14 @@ export default function Modal(props: IModalProps) {
     setuserValue(bookingUser);
     let datatoSend = {
       bookingData: props,
-      userData: userValue,
+      userData: bookingUser,
     };
+
     //Skickar datan till databasen
     axios.post("http://localhost:5000/", datatoSend).then((response) => {
       console.log(response.data);
     });
+    console.log(datatoSend);
   };
   return (
     <div>

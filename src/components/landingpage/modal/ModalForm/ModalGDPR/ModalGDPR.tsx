@@ -25,7 +25,6 @@ export default function ModalGDPR(props: IUpdateCheck) {
         type="checkbox"
         checked={checked}
         onChange={handleClick}
-        required
       ></input>
     </div>
   );

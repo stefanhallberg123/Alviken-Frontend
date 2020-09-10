@@ -34,8 +34,8 @@ export default function ModalForm(props: ISendFromForm) {
   // skickar datan till Modal (parent) och om det är ifyllt så kommer man till thankyou
   const handleSubmit = (e: any) => {
     props.updateValue(bookingUser);
-    e.preventDefault();
-    window.location.href = "/thankyou";
+    // e.preventDefault();
+    // window.location.href = "/thankyou";
   };
 
   return (
@@ -82,7 +82,7 @@ export default function ModalForm(props: ISendFromForm) {
           className="button"
           type="submit"
           onClick={handleSubmit}
-          disabled={!bookingUser}
+          // disabled={!bookingUser}
         >
           BOKA
         </button>
