@@ -3,18 +3,21 @@ import React, {useState, ChangeEvent} from 'react';
 import 'react-day-picker/lib/style.css';
 import "./landingpage.scss";
 import Axios from "axios";
+import Modal from '../modal/Modal/Modal';
 // import DayPickerInput from "react-day-picker";
-export default function LandingPage(props:any) {
+export default function LandingPage() {
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedTime, setSelectedTime] = useState("18");
     const [selectedPeople, setSelectedPeople] = useState("1");
-
+    const [showModal, setShowModal] = useState(false);
       
     
     function checkAvailability(){
-        props.setSelectedDate(selectedDate)
-        props.setSelecedtTime(selectedTime)
-        props.setSelecedtPeople(selectedPeople)
+
+        setShowModal(true)
+        // setSelectedDate(selectedDate)
+        // setSelectedTime(selectedTime)
+        // setSelectedPeople(selectedPeople)
 
         // console.log(selectedDate)
         // console.log(selectedTime)
@@ -60,6 +63,7 @@ function handleDateSelect(day: string){
                     <h1>Alviken</h1>
                     <h2>Välkommen att boka bord hos oss!</h2>
                     </div>
+                    {showModal?<Modal date={selectedDate} time={selectedTime} people={selectedPeople}></Modal>:
                     <form>
                         <div className="booking">
 { 
@@ -92,7 +96,7 @@ function handleDateSelect(day: string){
                             </button>
                             </div>
                         </div>
-                    </form> 
+                    </form> }
                     
                 </div> 
             </section>
