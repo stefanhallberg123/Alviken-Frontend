@@ -9,7 +9,6 @@ export interface IUserValue {
   phone: string;
   comment: string;
   email: string;
-  error: string;
 }
 
 export default function ModalForm(props: ISendFromForm) {
@@ -19,7 +18,6 @@ export default function ModalForm(props: ISendFromForm) {
     phone: "",
     comment: "",
     email: "",
-    error: "",
   };
   // ändrar state från defaultValue till bookingUser när infon kommer in
   // samt kollar så att checkboxen är ifylld från ModalGDPR
@@ -34,9 +32,9 @@ export default function ModalForm(props: ISendFromForm) {
     setbookingUser({ ...bookingUser, [e.target.name]: e.target.value });
   };
   // skickar datan till Modal (parent) och om det är ifyllt så kommer man till thankyou
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (e: any) => {
     props.updateValue(bookingUser);
-    event.preventDefault();
+    e.preventDefault();
     window.location.href = "/thankyou";
   };
 
@@ -81,10 +79,10 @@ export default function ModalForm(props: ISendFromForm) {
         <ModalGDPR sendCheckbox={checkTheBox}></ModalGDPR>
 
         <button
-          disabled={!bookingUser && !checkTheBox}
           className="button"
           type="submit"
           onClick={handleSubmit}
+          disabled={!bookingUser}
         >
           BOKA
         </button>

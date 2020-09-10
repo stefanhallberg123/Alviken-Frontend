@@ -1,12 +1,11 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import axios from "axios";
-import Calendar from "react-calendar";
 import "./edit.scss";
 
-// export interface IValues {
-//   [key: string]: any;
-// }
+export interface IValues {
+  [key: string]: any;
+}
 export interface IFormState {
   id: number;
   customer: any;
@@ -68,11 +67,11 @@ class EditCustomer extends React.Component<
       });
   };
 
-  private setValues = (values: any) => {
+  private setValues = (values: IValues) => {
     this.setState({ values: { ...this.state.values, ...values } });
   };
 
-  private handleInputChanges = (e: any) => {
+  private handleInputChanges = (e: IValues) => {
     e.preventDefault();
     this.setValues({ [e.currentTarget.id]: e.currentTarget.value });
     console.log(this.state);
@@ -146,9 +145,8 @@ class EditCustomer extends React.Component<
                         <select
                           value={this.state.customer.qty}
                           onChange={() => this.setState({})}
-                        >
-                          {/* {this.state.customer.map((qty: any) =><option key={qty.value} value={qty.value}>{qty.display}</option>)} */}
-                        </select>
+                        ></select>
+                        {/* {this.state.customer.map((qty: any) =><option key={qty.value} value={qty.value}>{qty.display}</option>)} */}
                         <select
                           name="qty"
                           defaultValue={this.state.customer.qty}
@@ -235,7 +233,7 @@ class EditCustomer extends React.Component<
                 </div>
               </form>
             </div>
-            <pre>{JSON.stringify(this.state, this.state.customer, 3)}</pre>
+            {/* <pre>{JSON.stringify(this.state, this.state.customer, 3)}</pre> */}
           </div>
         )}
       </div>

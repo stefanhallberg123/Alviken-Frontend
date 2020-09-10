@@ -4,12 +4,12 @@ import axios from "axios";
 import "./Modal.scss";
 
 export default function Modal() {
+  // här ska oskars info in för att sedan postas till DB
+  // const updateUser = (people: any) => {
+  //   setuserValue({ people });
+  //   console.log(people);
+  // };
   // hämtar datan från ModalForm och skickan in det i setUserValue
-
-  const updateUser = (people: any) => {
-    setuserValue({ people });
-    console.log(people);
-  };
   const [, setuserValue] = useState({});
   const updateValue = (bookingUser: IUserValue) => {
     setuserValue({ bookingUser });
