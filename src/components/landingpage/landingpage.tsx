@@ -22,67 +22,84 @@ export default function LandingPage(props: ISendData) {
   const handleData = (e: any) => {
     setAllData({ ...allData, [e.target.name]: e.target.value });
   };
-      
-  
-  
-const checkAvailability = (e:any)=>{
-setAllData(allData)
-setOpenModal(true)
+
+  const checkAvailability = (e: any) => {
+    setAllData(allData);
+    setOpenModal(true);
     e.preventDefault();
-    }
+  };
 
-    return (
+  return (
     <div>
-                    {openModal?<Modal date={selectedDate} time={selectedTime} people={selectedPeople}></Modal>:
+      {openModal ? (
+        <Modal
+          date={selectedDate}
+          time={selectedTime}
+          people={selectedPeople}
+        ></Modal>
+      ) : (
         <div className="landingpage-body">
-            <section className="hero">
-                <div className="hero-inner">
-                    <div className="greeting">
-                    <h1>Alviken</h1>
-                    <h2>Välkommen att boka bord hos oss!</h2>
+          <section className="hero">
+            <div className="hero-inner">
+              <div className="greeting">
+                <h1>Alviken</h1>
+                <h2>Välkommen att boka bord hos oss!</h2>
+              </div>
+              <form>
+                <div className="booking">
+                  {
+                    <div className="day select-box-landingpage">
+                      <input
+                        type="date"
+                        name="date"
+                        onChange={handleData}
+                        required
+                      ></input>
                     </div>
-                    <form>
-                        <div className="booking">
-{
-                            <div className="day select-box-landingpage">
-                                <input type="date" name="date"  onChange={handleData} required></input>
-                                
-                            </div>  }
+                  }
 
-                            <div className="time">
-                                <select className="select-box-landingpage" required name="time" onChange={handleData}>
-                                    <option value="18:00">18:00</option>
-                                    <option value="21:00">21:00</option>
-                                </select>
-                            </div>
+                  <div className="time">
+                    <select
+                      className="select-box-landingpage"
+                      required
+                      name="time"
+                      onChange={handleData}
+                    >
+                      <option value="18:00">18:00</option>
+                      <option value="21:00">21:00</option>
+                    </select>
+                  </div>
 
-                            <div className="people">
-                                <select className="select-box-landingpage" required name="people"  onChange={handleData}>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                </select>
-                            </div>
-                                <div className="book-button">
-                            <button type="button"
-                            disabled={!allData}
-                                onClick={checkAvailability}>
-                                <p>BOKA</p>
-                            </button>
-
-                            </div>
-                        </div>
-                    </form> 
-                    
-                        
-                    
-                </div> 
-            </section>
+                  <div className="people">
+                    <select
+                      className="select-box-landingpage"
+                      required
+                      name="people"
+                      onChange={handleData}
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                    </select>
+                  </div>
+                  <div className="book-button">
+                    <button
+                      type="button"
+                      disabled={!allData}
+                      onClick={checkAvailability}
+                    >
+                      <p>BOKA</p>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </section>
         </div>
-        }
-    </div>)
-
+      )}
+    </div>
+  );
 }

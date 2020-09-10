@@ -58,7 +58,6 @@ export default class Home extends React.Component<RouteComponentProps, IState> {
         </tr>
       );
     });
-
     return (
       <div>
         <AdminNav></AdminNav>

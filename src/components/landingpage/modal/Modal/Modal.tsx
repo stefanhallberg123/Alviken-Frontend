@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import ModalForm, { IUserValue } from "../ModalForm/ModalForm";
 import axios from "axios";
 import "./Modal.scss";
 import ModalForm, { IUserValue } from "./../ModalForm/ModalForm";
