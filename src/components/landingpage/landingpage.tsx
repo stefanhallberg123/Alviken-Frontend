@@ -1,17 +1,14 @@
-import React, { useState, ChangeEvent } from "react";
-//import DayPickerInput from 'react-day-picker/DayPickerInput';
+import React, { useState } from "react";
 import "react-day-picker/lib/style.css";
 import "./landingpage.scss";
-import Axios from "axios";
 import Modal from "./modal/Modal/Modal";
-// import DayPickerInput from "react-day-picker";
 interface ISendData {
   setAllData(allData: any): void;
 }
 
 export default function LandingPage(props: ISendData) {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedTime, setSelectedTime] = useState("18");
+  const [selectedTime, setSelectedTime] = useState("18:00");
   const [selectedPeople, setSelectedPeople] = useState("1");
   const [openModal, setOpenModal] = useState(false);
 
@@ -69,8 +66,8 @@ export default function LandingPage(props: ISendData) {
                       name="time"
                       onChange={handleData}
                     >
-                      <option value="18">18:00</option>
-                      <option value="21">21:00</option>
+                      <option value="18:00">18:00</option>
+                      <option value="21:00">21:00</option>
                     </select>
                   </div>
 
